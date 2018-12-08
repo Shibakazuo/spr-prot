@@ -13,7 +13,7 @@ Node::Node() {
 Node::Node(const Node& node) {
 	next = node.next;
 	value = node.value;
-	
+
 }
 
 Node::~Node() {
@@ -28,6 +28,10 @@ int Node::getValue() {
 	return value;
 }
 
+void Node::setValue(int val) {
+	 value = val; 
+}
+
 void Node::setNext(Node* nextNode) {
 	if(nextNode == NULL) {
 		next = NULL;
@@ -36,7 +40,4 @@ void Node::setNext(Node* nextNode) {
 	}
 }
 
-void Node::setValue(int val) {
-	 value = val; 
-}
 

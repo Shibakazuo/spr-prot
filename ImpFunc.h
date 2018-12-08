@@ -7,20 +7,19 @@ using namespace std;
 
 class ImpFunc
 {
+public:
+	virtual void exec();
 
-	public:
-		virtual void exec();
-
-		virtual ~ImpFunc() { };
+	virtual ~ImpFunc() { };
 
 }
 
 class Skip : public ImpFunc {
 
-	public:
-		virtual void exec() {
-			cout << "passed";
-		}
+public:
+	virtual void exec() {
+		cout << "passed";
+	}
 
-		virtual ~Skip() { }
+	virtual ~Skip() { }
 }
