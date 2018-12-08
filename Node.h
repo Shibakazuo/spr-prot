@@ -8,6 +8,7 @@ using namespace std;
 class Node {
 public: 
 	Node();
+	Node(const Node& node);
 	virtual ~Node();
 	Node* getNext();
 	int getValue();
@@ -17,7 +18,7 @@ public:
 private: 
 	Node* next;
 	int value;
-}
+};
 
 
 

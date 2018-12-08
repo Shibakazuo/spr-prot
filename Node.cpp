@@ -2,7 +2,7 @@
 #include <iostream>
 #include <cstdlib>
 #include <ctime>
-#include <Node.h>
+#include "Node.h"
 
 using namespace std;
 
@@ -13,6 +13,7 @@ Node::Node() {
 Node::Node(const Node& node) {
 	next = node.next;
 	value = node.value;
+	
 }
 
 Node::~Node() {
