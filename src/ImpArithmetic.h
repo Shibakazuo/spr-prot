@@ -24,7 +24,7 @@ class APlus : public ImpArithmetic {
 public: 
 	virtual Avar getValue();
 	virtual ~APlus() { }
-	Avar plus(Avar left, Avar right);
+	Aplus(Avar left, Avar right);
 
 
 private: 
@@ -37,7 +37,7 @@ class Amult : public ImpArithmetic {
 public: 
 	virtual Avar getValue();
 	virtual ~Amult() { }
-	Avar mult(Avar left, Avar right);
+	Amult(Avar left, Avar right);
 
 private: 
 	Avar left;
