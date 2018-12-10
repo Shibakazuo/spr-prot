@@ -6,11 +6,10 @@
 using namespace std;
 
 class Node {
-
 public: 
 	Node();
 	Node(const Node& node);
-	virtual ~Node();
+	virtual ~Node() { }
 	Node* getNext();
 	int getValue();
 	virtual void setNext() = 0;
@@ -21,10 +20,10 @@ private:
 	int value;
 };
 
-class FunctionNode : public Node {
-public:
+// class FunctionNode : public Node {
+// public:
 	
-}
+// }
 
 
 

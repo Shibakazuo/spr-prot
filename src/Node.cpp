@@ -16,10 +16,6 @@ Node::Node(const Node& node) {
 
 }
 
-Node::~Node() {
-
-}
-
 Node* Node::getNext() {
 	return next;
 }

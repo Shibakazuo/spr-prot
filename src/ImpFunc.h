@@ -5,8 +5,7 @@
 
 using namespace std;
 
-class ImpFunc
-{
+class ImpFunc {
 public:
 	virtual void exec();
 
