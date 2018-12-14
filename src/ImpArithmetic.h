@@ -7,35 +7,35 @@ using namespace std;
 
 class ImpArithmetic {
 public: 
-	virtual int getValue() = 0;
 	virtual ~ImpArithmetic() { }
-}
+};
 
 class Avar : public ImpArithmetic {
 public: 
-	virtual int getValue();
-	virtual ~Avalue() {}
+	int getValue();
+	void setValue(int val); 
+	virtual ~Avar() { }
 
 private: 
 	int value;
-}
+};
 
-class APlus : public ImpArithmetic {
+class Aplus : public ImpArithmetic {
 public: 
-	virtual Avar getValue();
-	virtual ~APlus() { }
-	Aplus(Avar left, Avar right);
+	Avar getValue();
+	virtual ~Aplus() { }
+	Aplus(Avar l, Avar r);
 
 
 private: 
 	Avar left;
 	Avar right;
 	Avar value;
-}
+};
 
 class Amult : public ImpArithmetic {
 public: 
-	virtual Avar getValue();
+	Avar getValue();
 	virtual ~Amult() { }
 	Amult(Avar left, Avar right);
 
@@ -43,4 +43,4 @@ private:
 	Avar left;
 	Avar right;
 	Avar value;
-}
+};

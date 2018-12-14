@@ -6,14 +6,35 @@
 
 using namespace std;
 
-int Avar::getvalue() {
+// Avar
+int Avar::getValue() {
 	return value;
 }
 
-int Aplus::getvalue() {
+void Avar::setValue(int res) {
+	value = res;
+}
+
+// Aplus 
+Avar Aplus::getValue() {
 	return value;
 }
 
-Aplus::Aplus(Avar left, Avar right) {
-	result = left + right;
+Aplus::Aplus(Avar l, Avar r) {
+	left = l;
+	right = r;
+	int result = left.getValue() + right.getValue();
+	value.setValue(result);
+}
+
+// Amult
+Avar Amult::getValue() {
+	return value;
+}
+
+Amult::Amult(Avar l, Avar r) {
+	left = l;
+	right = r;
+	int result = left.getValue() * right.getValue();
+	value.setValue(result);
 }

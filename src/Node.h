@@ -7,23 +7,32 @@ using namespace std;
 
 class Node {
 public: 
-	Node();
-	Node(const Node& node);
 	virtual ~Node() { }
 	Node* getNext();
 	int getValue();
-	void setNext(Node* nextNode);
+	virtual void setNext(Node* nextNode) = 0;
 	void setValue(int val);
 
 private:
 	Node* next;
-	int value;
 };
 
-// class FunctionNode : public Node {
-// public:
-	
-// }
+class AssignNode : public Node {
+public:
+	AssignNode();
+	virtual ~AssignNode() { }
+	virtual void setNext(Node* nextNode);
+
+private: 
+	int value;
+}
+
+class BranchNode : public Node {
+public: 
+	BranchNode(); 
+	virtual ~BranchNode() { }
+	virtual void setNext(Node* nextNode);
+}
 
 
 

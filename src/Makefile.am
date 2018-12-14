@@ -2,4 +2,4 @@
 bin_PROGRAMS = runSPR
 
 # test生成に必要なソースコード
-runSPR_SOURCES = Main.cpp Node.cpp Node.h
+runSPR_SOURCES = Main.cpp Node.cpp Node.h ImpArithmetic.cpp ImpArithmetic.h

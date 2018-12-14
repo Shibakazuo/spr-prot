@@ -6,16 +6,7 @@
 
 using namespace std;
 
-Node::Node() {
-	next = NULL;
-}
-
-Node::Node(const Node& node) {
-	next = node.next;
-	value = node.value;
-
-}
-
+// Node
 Node* Node::getNext() {
 	return next;
 }
@@ -36,4 +27,15 @@ void Node::setNext(Node* nextNode) {
 	}
 }
 
+
+// AssignNode
+
+AssignNode::AssignNode() {
+	next = NULL;
+	value = 0;
+}
+
+Node::Node() {
+	next = NULL;
+}
 
