@@ -11,7 +11,7 @@ int main() {
     Node *end;
     Node* head = new Node();
 
-    head->setValue(1);
+    head->setValue(5);
     Node *newNode = new Node();
     head->setNext(newNode);
 

@@ -12,7 +12,7 @@ public:
 	virtual ~Node() { }
 	Node* getNext();
 	int getValue();
-	virtual void setNext() = 0;
+	void setNext(Node* nextNode);
 	void setValue(int val);
 
 private:
