@@ -7,14 +7,15 @@
 using namespace std;
 
 
+void printEnv (Node* node) {
+	cout << node->getEnv().x << " " << node->getEnv().y << " " << node->getEnv().z << endl; 
+}
+
 int main() {
-    Node *end;
-    Node* head = new Node();
+    AssignNode* head = new AssignNode();
 
-    head->setValue(5);
-    Node *newNode = new Node();
-    head->setNext(newNode);
-
-    cout << head->getValue() << endl; 
+    head->setEnv(1, 0, 1);
+    printEnv(head);
+    
     return 0;
 }

@@ -15,7 +15,6 @@ public:
 	int getValue();
 	void setValue(int val); 
 	virtual ~Avar() { }
-
 private: 
 	int value;
 };
@@ -25,8 +24,6 @@ public:
 	Avar getValue();
 	virtual ~Aplus() { }
 	Aplus(Avar l, Avar r);
-
-
 private: 
 	Avar left;
 	Avar right;
@@ -38,7 +35,6 @@ public:
 	Avar getValue();
 	virtual ~Amult() { }
 	Amult(Avar left, Avar right);
-
 private: 
 	Avar left;
 	Avar right;

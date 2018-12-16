@@ -6,36 +6,42 @@
 
 using namespace std;
 
-// Node
-Node* Node::getNext() {
-	return next;
-}
-
-int Node::getValue() {
-	return value;
-}
-
-void Node::setValue(int val) {
-	 value = val; 
-}
-
-void Node::setNext(Node* nextNode) {
-	if(nextNode == NULL) {
-		next = NULL;
-	} else {
-		next = nextNode;
-	}
-}
-
-
 // AssignNode
 
 AssignNode::AssignNode() {
 	next = NULL;
-	value = 0;
 }
 
-Node::Node() {
+Environment AssignNode::getEnv() {
+	return env;
+}
+
+void AssignNode::setEnv(int x, int y, int z) {
+	env.x = x;
+	env.y = y;
+	env.z = z;
+}
+
+void AssignNode::setNext(Node* nextNode) {
+
+}
+
+// Branchnode
+
+BranchNode::BranchNode() {
 	next = NULL;
 }
 
+Environment BranchNode::getEnv() {
+	return env;
+}
+
+void BranchNode::setEnv(int x, int y, int z) {
+	env.x = x;
+	env.y = y;
+	env.z = z;
+}
+
+void BranchNode::setNext(Node* nextNode) {
+
+}
