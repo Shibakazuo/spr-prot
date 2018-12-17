@@ -16,8 +16,7 @@ public:
 	virtual ~Node() { }
 	virtual Environment getEnv() = 0;
 	virtual void setEnv(int x, int y, int z) = 0;
-	virtual void setNext(Node* nextNode) = 0;
-	virtual void setLabel(int label) = 0;
+	virtual void setLabel(int num) = 0;
 };
 
 class AssignNode : public Node {
@@ -26,12 +25,12 @@ public:
 	virtual ~AssignNode() { }
 	virtual Environment getEnv();
 	virtual void setEnv(int x, int y, int z);
-	virtual void setNext(Node* nextNode);
-	virtual void setLabel(int label);
+	virtual void setLabel(int num);
+	void setNext(Node* next);
 private:
 	Environment env;
 	int label;
-	Node* next;
+	Node* nextNode;
 };
 
 class BranchNode : public Node {
@@ -40,8 +39,8 @@ public:
 	virtual ~BranchNode() { }
 	virtual Environment getEnv();
 	virtual void setEnv(int x, int y, int z);
-	virtual void setNext(Node* nextNode);
-	virtual void setLabel(int label);
+	virtual void setLabel(int num);
+	void setNext(Node* tNode, Node* fNode);
 private:
 	Environment env;
 	int label;

@@ -7,7 +7,6 @@
 using namespace std;
 
 // AssignNode
-
 AssignNode::AssignNode() {
 	next = NULL;
 }
@@ -22,12 +21,16 @@ void AssignNode::setEnv(int x, int y, int z) {
 	env.z = z;
 }
 
-void AssignNode::setNext(Node* nextNode) {
-
+void AssignNode::setNext(Node* next) {
+	nextNode = next
 }
 
-// Branchnode
+void AssignNode::setLabel(int num) {
+	label = num;
+}
 
+
+// Branchnode
 BranchNode::BranchNode() {
 	next = NULL;
 }
@@ -42,6 +45,11 @@ void BranchNode::setEnv(int x, int y, int z) {
 	env.z = z;
 }
 
-void BranchNode::setNext(Node* nextNode) {
+void BranchNode::setNext(Node* tNode, Node* fNode) {
+	trueNode = tNode;
+	falseNode = fNode;
+}
 
+void AssignNode::setLabel(int num) {
+	label = num;
 }
