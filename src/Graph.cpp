@@ -9,5 +9,5 @@
 using namespace std;
 
 void GraphInit() {
-	
+	AssignNode xa;
 } 

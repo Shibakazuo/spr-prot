@@ -48,5 +48,14 @@ private:
 	Node* falseNode;
 };
 
+class SkipNode: public Node {
+public:
+	SkipNode();
+	virtual ~SkipNode() { }
+	virtual Environment getEnv();
+	virtual void setEnv(int x, int y, int z);
+	virtual void setLabel(int num);
+	void setNext(Node* next);
+}
 
 

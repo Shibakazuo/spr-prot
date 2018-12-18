@@ -53,3 +53,6 @@ void BranchNode::setNext(Node* tNode, Node* fNode) {
 void AssignNode::setLabel(int num) {
 	label = num;
 }
+
+
+// SkipNode
