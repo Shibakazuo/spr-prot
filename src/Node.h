@@ -48,14 +48,20 @@ private:
 	Node* falseNode;
 };
 
-class SkipNode: public Node {
+class FuncNode: public Node {
 public:
-	SkipNode();
-	virtual ~SkipNode() { }
+	FuncNode();
+	virtual ~FuncNode() { }
 	virtual Environment getEnv();
 	virtual void setEnv(int x, int y, int z);
 	virtual void setLabel(int num);
+	void skip();
+	void printOutput();
 	void setNext(Node* next);
+private:
+	Environment env;
+	int label;
+	Node* nextNode;
 }
 
 

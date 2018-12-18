@@ -10,13 +10,13 @@ using namespace std;
 
 class Graph {
 public:
-	Graph 
+	Graph();
 	~Graph() { };
-	void GraphInit();
+	void SrcGraphInit();
 	void RunTest();
 private:
 	set<Node> nodes;
 	Environment input;
-	Node entry;
-	Node exit;
+	Node* entry;
+	Node* exit;
 }

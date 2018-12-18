@@ -8,6 +8,15 @@
 
 using namespace std;
 
-void GraphInit() {
-	AssignNode xa;
+void SrcGraphInit() {
+	AssignNode XA = new AssignNode();
+	AssignNode YB = new AssignNode();
+	AssignNode Z0 = new AssignNode();
+	BranchNode X10 = new BranchNode();
+	AssignNode ZZX = new AssignNode();
+	AssignNode ZZY = new AssignNode();
+	BranchNode Z20 = new BranchNode();
+	AssignNode ZZY2 = new AssignNode();
+
+	XA.setNext(YB)
 } 
