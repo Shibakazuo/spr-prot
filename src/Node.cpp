@@ -6,6 +6,16 @@
 
 using namespace std;
 
+// Node
+
+int Node::getLabel() {
+	return label;
+}
+
+Node* Node::getNextNode() {
+	return nextNode;
+}
+
 // AssignNode
 AssignNode::AssignNode() {
 	nextNode = NULL;
@@ -27,17 +37,19 @@ void AssignNode::setEnv(int x, int y, int z) {
 }
 
 void AssignNode::setNext(Node* next) {
-	nextNode = next
+	nextNode = next;
 }
 
 
 // Branchnode
 BranchNode::BranchNode() {
-	nextNode = NULL;
+	trueNode = NULL;
+	falseNode = NULL;
 }
 
 BranchNode::BranchNode(int label) {
-	nextNode = NULL;
+	trueNode = NULL;
+	falseNode = NULL;
 	label = label;
 }
 
@@ -82,8 +94,8 @@ void FuncNode::setNext(Node* next) {
 }
 
 void FuncNode::skip() {
-	while (trueNode->label > label) {
-		trueNode = trueNode.nextNode;
+	while (nextNode->getLabel() > label) {
+		nextNode = nextNode->getNextNode();
 	}
 }
 

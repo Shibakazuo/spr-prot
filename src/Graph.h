@@ -3,7 +3,6 @@
 #include <cstdlib>
 #include <ctime>
 #include <set>
-#include "Node.h" 
 
 using namespace std;
 
@@ -15,8 +14,8 @@ public:
 	void SrcGraphInit();
 	void RunTest();
 private:
-	set<Node> nodes;
+	set<Node*> nodes;
 	Environment input;
 	Node* entry;
 	Node* exit;
-}
+};

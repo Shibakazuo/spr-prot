@@ -16,6 +16,12 @@ public:
 	virtual ~Node() { }
 	virtual Environment getEnv() = 0;
 	virtual void setEnv(int x, int y, int z) = 0;
+	int getLabel();
+	Node* getNextNode();
+private:
+	Environment env;
+	int label;
+	Node* nextNode;
 };
 
 class AssignNode : public Node {
@@ -61,6 +67,6 @@ private:
 	Environment env;
 	int label;
 	Node* nextNode;
-}
+};
 
 
