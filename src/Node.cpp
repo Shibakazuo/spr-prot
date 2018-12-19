@@ -8,7 +8,12 @@ using namespace std;
 
 // AssignNode
 AssignNode::AssignNode() {
-	next = NULL;
+	nextNode = NULL;
+}
+
+AssignNode::AssignNode(int label) {
+	nextNode = NULL;
+	label = label;
 }
 
 Environment AssignNode::getEnv() {
@@ -25,14 +30,15 @@ void AssignNode::setNext(Node* next) {
 	nextNode = next
 }
 
-void AssignNode::setLabel(int num) {
-	label = num;
-}
-
 
 // Branchnode
 BranchNode::BranchNode() {
-	next = NULL;
+	nextNode = NULL;
+}
+
+BranchNode::BranchNode(int label) {
+	nextNode = NULL;
+	label = label;
 }
 
 Environment BranchNode::getEnv() {
@@ -50,9 +56,37 @@ void BranchNode::setNext(Node* tNode, Node* fNode) {
 	falseNode = fNode;
 }
 
-void AssignNode::setLabel(int num) {
-	label = num;
+
+// FuncNode
+FuncNode::FuncNode() {
+	nextNode = NULL;
 }
 
+FuncNode::FuncNode(int label) {
+	nextNode = NULL; 
+	label = label;
+}
 
-// SkipNode
+Environment FuncNode::getEnv() {
+	return env; 
+}
+
+void FuncNode::setEnv (int x, int y, int z) {
+	env.x = x;
+	env.y = y;
+	env.z = z;
+} 
+
+void FuncNode::setNext(Node* next) {
+	nextNode = next;
+}
+
+void FuncNode::skip() {
+	while (trueNode->label > label) {
+		trueNode = trueNode.nextNode;
+	}
+}
+
+void FuncNode::printEnv() {
+	cout << env.x << " " << env.y << " " << env.z << endl; 
+}
