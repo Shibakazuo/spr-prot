@@ -18,5 +18,12 @@ void SrcGraphInit() {
 	BranchNode Z20 = new BranchNode();
 	AssignNode ZZY2 = new AssignNode();
 
-	XA.setNext(YB)
+	XA.setNext(YB);
+	XA.setLabel(1);
+	XA.setEnv(7, 3, 0);
+	YB.setNext(Z0);
+	YB.setLabel(2);
+	Z0.setNext(X10);
+	Z0.setLabel(3);
+	X10.setNext(ZZX)
 } 
