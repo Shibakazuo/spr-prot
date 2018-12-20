@@ -10,7 +10,7 @@ class Graph {
 public:
 	Graph();
 	~Graph() { };
-	void SrcGraphInit();
+	void srcGraphInit();
 	void RunTest();
 	set<INode*> nodes;
 	Environment input;

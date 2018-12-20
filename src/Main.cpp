@@ -7,18 +7,18 @@
 
 using namespace std;
 
+void printNodes(INode* node) {
+	cout << node->getLabel();
+	cout << " x:" << node->getEnv().x << " y:" << node->getEnv().y << " z:" << node->getEnv().z << endl;
+	if (node->getNext() == NULL) return;
+	printNodes(node->getNext());
+	
+}
 
 int main() {
-    AssignNode* XA = new AssignNode();
-	AssignNode* YB = new AssignNode();
-	AssignNode* Z0 = new AssignNode();
-	BranchNode* X10 = new BranchNode();
-	AssignNode* ZZX = new AssignNode();
-	AssignNode* ZZY = new AssignNode();
-	BranchNode* Z20 = new BranchNode();
-	AssignNode* ZZY2 = new AssignNode();
-	FuncNode* print = new FuncNode();
-
-
+	Graph* test = new Graph();
+	test->srcGraphInit();
+	cout << test->entry->getNext()->getNext()->getNext()->getLabel() << endl;
+	printNodes(test->entry);
     return 0;
 }

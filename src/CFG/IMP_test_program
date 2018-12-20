@@ -3,7 +3,7 @@
 1	X := A	
 2	Y := B
 3	Z := 0
-4	IF X > 10
+4	IF X < 10
 5	Z := Z + X
  	END IF
 6	Z := Z + Y

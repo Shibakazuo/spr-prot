@@ -67,17 +67,17 @@ void BranchNode::setEnv(int x, int y, int z) {
 	env.z = z;
 }
 
-INode* BranchNode::getTrue() {
-	return trueNode;
-}
-
-INode* BranchNode::getFalse() {
-	return falseNode;
+INode* BranchNode::getNext() {
+	return direct ? trueNode : falseNode;
 }
 
 void BranchNode::setNext(INode* tNode, INode* fNode) {
 	trueNode = tNode;
 	falseNode = fNode;
+}
+
+void BranchNode::setDirect(bool di) {
+	direct = di;
 }
 
 
@@ -114,7 +114,7 @@ void FuncNode::setNext(INode* next) {
 
 void FuncNode::skip() {
 	// while (nextNode->getLabel() > label) {
-		
+
 	// }
 }
 

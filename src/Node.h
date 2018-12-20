@@ -18,6 +18,7 @@ public:
 	virtual void setEnv(int x, int y, int z) = 0;
 	virtual void setLabel(int num) = 0;
 	virtual int getLabel() = 0;
+	virtual INode* getNext() = 0;
 };
 
 
@@ -30,7 +31,7 @@ public:
 	virtual void setEnv(int x, int y, int z);
 	virtual int getLabel();
 	virtual void setLabel(int num);
-	INode* getNext();
+	virtual INode* getNext();
 	void setNext(INode* next);
 private:
 	INode* nextNode;
@@ -48,13 +49,14 @@ public:
 	virtual void setEnv(int x, int y, int z);
 	virtual void setLabel(int num);
 	virtual int getLabel();
-	INode* getTrue();
-	INode* getFalse();
+	virtual INode* getNext();
+	void setDirect(bool di);
 	void setNext(INode* tNode, INode* fNode);
 private:
 	INode* trueNode;
 	INode* falseNode;
 	Environment env;
+	bool direct;
 	int label;
 };
 
@@ -69,7 +71,7 @@ public:
 	virtual int getLabel();
 	void skip();
 	void printEnv();
-	INode* getNext();
+	virtual INode* getNext();
 	void setNext(INode* next);
 private:
 	INode* nextNode;
