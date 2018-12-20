@@ -11,62 +11,70 @@ struct Environment {
 	int z;
 };
 
-class Node {
+class INode {
 public: 
-	virtual ~Node() { }
+	virtual ~INode() { }
 	virtual Environment getEnv() = 0;
 	virtual void setEnv(int x, int y, int z) = 0;
-	int getLabel();
-	Node* getNextNode();
-private:
-	Environment env;
-	int label;
-	Node* nextNode;
+	virtual void setLabel(int num) = 0;
+	virtual int getLabel() = 0;
 };
 
-class AssignNode : public Node {
+
+class AssignNode : public INode {
 public:
 	AssignNode();
-	AssignNode(int label);
+	AssignNode(int num);
 	virtual ~AssignNode() { }
 	virtual Environment getEnv();
 	virtual void setEnv(int x, int y, int z);
-	void setNext(Node* next);
+	virtual int getLabel();
+	virtual void setLabel(int num);
+	INode* getNext();
+	void setNext(INode* next);
 private:
+	INode* nextNode;
 	Environment env;
 	int label;
-	Node* nextNode;
 };
 
-class BranchNode : public Node {
+
+class BranchNode : public INode {
 public: 
 	BranchNode(); 
-	BranchNode(int label);
+	BranchNode(int num);
 	virtual ~BranchNode() { }
 	virtual Environment getEnv();
 	virtual void setEnv(int x, int y, int z);
-	void setNext(Node* tNode, Node* fNode);
+	virtual void setLabel(int num);
+	virtual int getLabel();
+	INode* getTrue();
+	INode* getFalse();
+	void setNext(INode* tNode, INode* fNode);
 private:
+	INode* trueNode;
+	INode* falseNode;
 	Environment env;
 	int label;
-	Node* trueNode;
-	Node* falseNode;
 };
 
-class FuncNode: public Node {
+class FuncNode: public INode {
 public:
 	FuncNode();
-	FuncNode(int label);
+	FuncNode(int num);
 	virtual ~FuncNode() { }
 	virtual Environment getEnv();
 	virtual void setEnv(int x, int y, int z);
+	virtual void setLabel(int num);
+	virtual int getLabel();
 	void skip();
 	void printEnv();
-	void setNext(Node* next);
+	INode* getNext();
+	void setNext(INode* next);
 private:
+	INode* nextNode;
 	Environment env;
 	int label;
-	Node* nextNode;
 };
 
 

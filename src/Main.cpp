@@ -3,19 +3,22 @@
 #include <cstdlib>
 #include <ctime>
 #include "Node.h"
+#include "Graph.h"
 
 using namespace std;
 
 
-void printEnv (Node* node) {
-	cout << node->getEnv().x << " " << node->getEnv().y << " " << node->getEnv().z << endl; 
-}
-
 int main() {
-    AssignNode* head = new AssignNode();
+    AssignNode* XA = new AssignNode();
+	AssignNode* YB = new AssignNode();
+	AssignNode* Z0 = new AssignNode();
+	BranchNode* X10 = new BranchNode();
+	AssignNode* ZZX = new AssignNode();
+	AssignNode* ZZY = new AssignNode();
+	BranchNode* Z20 = new BranchNode();
+	AssignNode* ZZY2 = new AssignNode();
+	FuncNode* print = new FuncNode();
 
-    head->setEnv(1, 0, 1);
-    printEnv(head);
-    
+
     return 0;
 }

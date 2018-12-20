@@ -6,16 +6,14 @@
 
 using namespace std;
 
-
 class Graph {
 public:
 	Graph();
 	~Graph() { };
 	void SrcGraphInit();
 	void RunTest();
-private:
-	set<Node*> nodes;
+	set<INode*> nodes;
 	Environment input;
-	Node* entry;
-	Node* exit;
+	INode* entry;
+	INode* exit;
 };

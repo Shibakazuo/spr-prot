@@ -7,16 +7,31 @@
 
 using namespace std;
 
-void SrcGraphInit() {
-	AssignNode* XA = new AssignNode(1);
-	AssignNode* YB = new AssignNode(2);
-	AssignNode* Z0 = new AssignNode(3);
-	BranchNode* X10 = new BranchNode(4);
-	AssignNode* ZZX = new AssignNode(5);
-	AssignNode* ZZY = new AssignNode(6);
-	BranchNode* Z20 = new BranchNode(7);
-	AssignNode* ZZY2 = new AssignNode(8);
-	FuncNode* print = new FuncNode(9);
+Graph::Graph() {
+	entry = NULL;
+	exit = NULL;
+}
+
+void Graph::SrcGraphInit() {
+	AssignNode* XA = new AssignNode();
+	AssignNode* YB = new AssignNode();
+	AssignNode* Z0 = new AssignNode();
+	BranchNode* X10 = new BranchNode();
+	AssignNode* ZZX = new AssignNode();
+	AssignNode* ZZY = new AssignNode();
+	BranchNode* Z20 = new BranchNode();
+	AssignNode* ZZY2 = new AssignNode();
+	FuncNode* print = new FuncNode();
+
+	nodes.insert(XA);
+	nodes.insert(YB);
+	nodes.insert(Z0);
+	nodes.insert(X10);
+	nodes.insert(ZZX);
+	nodes.insert(ZZY);
+	nodes.insert(Z20);
+	nodes.insert(ZZY2);
+	nodes.insert(print);
 
 	XA->setNext(YB);
 	XA->setEnv(7, 3, 0);

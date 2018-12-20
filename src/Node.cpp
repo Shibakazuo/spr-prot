@@ -6,19 +6,13 @@
 
 using namespace std;
 
-// Node
-
-int Node::getLabel() {
-	return label;
-}
-
-Node* Node::getNextNode() {
-	return nextNode;
-}
-
 // AssignNode
 AssignNode::AssignNode() {
 	nextNode = NULL;
+}
+
+void AssignNode::setLabel(int num) {
+	label = num;
 }
 
 AssignNode::AssignNode(int label) {
@@ -30,13 +24,21 @@ Environment AssignNode::getEnv() {
 	return env;
 }
 
+int AssignNode::getLabel() {
+	return label;
+}
+
 void AssignNode::setEnv(int x, int y, int z) {
 	env.x = x;
 	env.y = y;
 	env.z = z;
 }
 
-void AssignNode::setNext(Node* next) {
+INode* AssignNode::getNext() {
+	return nextNode;
+}
+
+void AssignNode::setNext(INode* next) {
 	nextNode = next;
 }
 
@@ -47,14 +49,16 @@ BranchNode::BranchNode() {
 	falseNode = NULL;
 }
 
-BranchNode::BranchNode(int label) {
-	trueNode = NULL;
-	falseNode = NULL;
-	label = label;
-}
-
 Environment BranchNode::getEnv() {
 	return env;
+}
+
+int BranchNode::getLabel() {
+	return label;
+}
+
+void BranchNode::setLabel(int num) {
+	label = num;
 }
 
 void BranchNode::setEnv(int x, int y, int z) {
@@ -63,7 +67,15 @@ void BranchNode::setEnv(int x, int y, int z) {
 	env.z = z;
 }
 
-void BranchNode::setNext(Node* tNode, Node* fNode) {
+INode* BranchNode::getTrue() {
+	return trueNode;
+}
+
+INode* BranchNode::getFalse() {
+	return falseNode;
+}
+
+void BranchNode::setNext(INode* tNode, INode* fNode) {
 	trueNode = tNode;
 	falseNode = fNode;
 }
@@ -74,13 +86,12 @@ FuncNode::FuncNode() {
 	nextNode = NULL;
 }
 
-FuncNode::FuncNode(int label) {
-	nextNode = NULL; 
-	label = label;
-}
-
 Environment FuncNode::getEnv() {
 	return env; 
+}
+
+int FuncNode::getLabel() {
+	return label;
 }
 
 void FuncNode::setEnv (int x, int y, int z) {
@@ -89,14 +100,22 @@ void FuncNode::setEnv (int x, int y, int z) {
 	env.z = z;
 } 
 
-void FuncNode::setNext(Node* next) {
+void FuncNode::setLabel(int num) {
+	label = num;
+}
+
+INode* FuncNode::getNext() {
+	return nextNode;
+}
+
+void FuncNode::setNext(INode* next) {
 	nextNode = next;
 }
 
 void FuncNode::skip() {
-	while (nextNode->getLabel() > label) {
-		nextNode = nextNode->getNextNode();
-	}
+	// while (nextNode->getLabel() > label) {
+		
+	// }
 }
 
 void FuncNode::printEnv() {
