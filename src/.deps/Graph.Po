@@ -19,6 +19,10 @@ Graph.o: Graph.cpp \
   /usr/include/sys/_types/_uintptr_t.h \
   /usr/include/sys/_types/_errno_t.h /usr/include/sys/_types/_ssize_t.h \
   /usr/include/strings.h \
+  /Library/Developer/CommandLineTools/usr/include/c++/v1/stdio.h \
+  /usr/include/stdio.h /usr/include/_stdio.h \
+  /usr/include/sys/_types/_va_list.h /usr/include/sys/stdio.h \
+  /usr/include/sys/_types/_off_t.h \
   /Library/Developer/CommandLineTools/usr/include/c++/v1/iostream \
   /Library/Developer/CommandLineTools/usr/include/c++/v1/ios \
   /Library/Developer/CommandLineTools/usr/include/c++/v1/iosfwd \
@@ -27,14 +31,10 @@ Graph.o: Graph.cpp \
   /usr/include/sys/_types/_ct_rune_t.h /usr/include/sys/_types/_rune_t.h \
   /usr/include/sys/_types/_wchar_t.h \
   /Library/Developer/CommandLineTools/usr/lib/clang/10.0.0/include/stdarg.h \
-  /Library/Developer/CommandLineTools/usr/include/c++/v1/stdio.h \
-  /usr/include/stdio.h /usr/include/_stdio.h \
-  /usr/include/sys/_types/_va_list.h /usr/include/sys/stdio.h \
-  /usr/include/sys/_types/_off_t.h /usr/include/time.h \
-  /usr/include/sys/_types/_clock_t.h /usr/include/sys/_types/_time_t.h \
-  /usr/include/sys/_types/_timespec.h /usr/include/_wctype.h \
-  /usr/include/__wctype.h /usr/include/sys/_types/_wint_t.h \
-  /usr/include/_types/_wctype_t.h \
+  /usr/include/time.h /usr/include/sys/_types/_clock_t.h \
+  /usr/include/sys/_types/_time_t.h /usr/include/sys/_types/_timespec.h \
+  /usr/include/_wctype.h /usr/include/__wctype.h \
+  /usr/include/sys/_types/_wint_t.h /usr/include/_types/_wctype_t.h \
   /Library/Developer/CommandLineTools/usr/include/c++/v1/ctype.h \
   /usr/include/ctype.h /usr/include/_ctype.h /usr/include/runetype.h \
   /Library/Developer/CommandLineTools/usr/include/c++/v1/__locale \
@@ -158,8 +158,7 @@ Graph.o: Graph.cpp \
   /Library/Developer/CommandLineTools/usr/include/c++/v1/bitset \
   /Library/Developer/CommandLineTools/usr/include/c++/v1/__bit_reference \
   Node.h Graph.h \
-  /Library/Developer/CommandLineTools/usr/include/c++/v1/set \
-  /Library/Developer/CommandLineTools/usr/include/c++/v1/__tree
+  /Library/Developer/CommandLineTools/usr/include/c++/v1/list
 
 /Library/Developer/CommandLineTools/usr/include/c++/v1/cstring:
 
@@ -225,6 +224,18 @@ Graph.o: Graph.cpp \
 
 /usr/include/strings.h:
 
+/Library/Developer/CommandLineTools/usr/include/c++/v1/stdio.h:
+
+/usr/include/stdio.h:
+
+/usr/include/_stdio.h:
+
+/usr/include/sys/_types/_va_list.h:
+
+/usr/include/sys/stdio.h:
+
+/usr/include/sys/_types/_off_t.h:
+
 /Library/Developer/CommandLineTools/usr/include/c++/v1/iostream:
 
 /Library/Developer/CommandLineTools/usr/include/c++/v1/ios:
@@ -244,18 +255,6 @@ Graph.o: Graph.cpp \
 /usr/include/sys/_types/_wchar_t.h:
 
 /Library/Developer/CommandLineTools/usr/lib/clang/10.0.0/include/stdarg.h:
-
-/Library/Developer/CommandLineTools/usr/include/c++/v1/stdio.h:
-
-/usr/include/stdio.h:
-
-/usr/include/_stdio.h:
-
-/usr/include/sys/_types/_va_list.h:
-
-/usr/include/sys/stdio.h:
-
-/usr/include/sys/_types/_off_t.h:
 
 /usr/include/time.h:
 
@@ -601,6 +600,4 @@ Node.h:
 
 Graph.h:
 
-/Library/Developer/CommandLineTools/usr/include/c++/v1/set:
-
-/Library/Developer/CommandLineTools/usr/include/c++/v1/__tree:
+/Library/Developer/CommandLineTools/usr/include/c++/v1/list:

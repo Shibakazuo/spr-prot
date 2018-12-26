@@ -158,8 +158,7 @@ Main.o: Main.cpp \
   /Library/Developer/CommandLineTools/usr/include/c++/v1/bitset \
   /Library/Developer/CommandLineTools/usr/include/c++/v1/__bit_reference \
   Node.h Graph.h \
-  /Library/Developer/CommandLineTools/usr/include/c++/v1/set \
-  /Library/Developer/CommandLineTools/usr/include/c++/v1/__tree
+  /Library/Developer/CommandLineTools/usr/include/c++/v1/list
 
 /Library/Developer/CommandLineTools/usr/include/c++/v1/cstring:
 
@@ -601,6 +600,4 @@ Node.h:
 
 Graph.h:
 
-/Library/Developer/CommandLineTools/usr/include/c++/v1/set:
-
-/Library/Developer/CommandLineTools/usr/include/c++/v1/__tree:
+/Library/Developer/CommandLineTools/usr/include/c++/v1/list:

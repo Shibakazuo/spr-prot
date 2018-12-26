@@ -113,9 +113,9 @@ void FuncNode::setNext(INode* next) {
 }
 
 void FuncNode::skip() {
-	// while (nextNode->getLabel() > label) {
-
-	// }
+	while (nextNode->getLabel() > label) {
+		nextNode = nextNode->getNext();
+	}
 }
 
 void FuncNode::printEnv() {

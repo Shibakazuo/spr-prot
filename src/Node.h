@@ -21,7 +21,6 @@ public:
 	virtual INode* getNext() = 0;
 };
 
-
 class AssignNode : public INode {
 public:
 	AssignNode();

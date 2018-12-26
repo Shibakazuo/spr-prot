@@ -2,7 +2,7 @@
 #include <iostream>
 #include <cstdlib>
 #include <ctime>
-#include <set>
+#include <list>
 
 using namespace std;
 
@@ -12,7 +12,7 @@ public:
 	~Graph() { };
 	void srcGraphInit();
 	void RunTest();
-	set<INode*> nodes;
+	list<INode*> nodes;
 	Environment input;
 	INode* entry;
 	INode* exit;
