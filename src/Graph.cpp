@@ -14,6 +14,7 @@ Graph::Graph() {
 }
 
 void Graph::srcGraphInit() {
+	//セットでまとめられないため一時的処置		
 	AssignNode XA, YB, Z0, ZZX, ZZY, ZZY2;
 	BranchNode X10, Z20;
 	FuncNode print;
@@ -47,20 +48,13 @@ void Graph::srcGraphInit() {
 	Z20.setNext(&ZZY2, &print);
 	ZZY2.setNext(&Z20);
 
-	nodes.push_back(&XA);
-	nodes.push_back(&YB);
-	nodes.push_back(&Z0);
-	nodes.push_back(&X10);
-	nodes.push_back(&ZZX);
-	nodes.push_back(&ZZY);
-	nodes.push_back(&Z20);
-	nodes.push_back(&ZZY2);
-	nodes.push_back(&print);
+	AssignNode[7] {XA, YB, Z0, ZZX, ZZY, ZZY2}
 
+	entry = &XA;
+	exit = &print;
+	XA.setNext(&Z0);
 
-	 entry = &XA;
-	 exit = &print;
-
+	cout << XA.getNext()->getLabel() << endl;
+	cout << nodes.aNodes[0].getNext()->getLabel() << endl;
 	cout << entry->getNext()->getLabel() << endl;
-	cout << (*nodes.begin())->getLabel() << endl;
-} 
+}
