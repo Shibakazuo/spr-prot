@@ -5,38 +5,55 @@
 
 using namespace std;
 
-class ImpArithmetic {
+class Arithmetic {
 public: 
-	virtual ~ImpArithmetic() { }
+	virtual int getValue() = 0;
+	virtual string getCode() = 0;
+	virtual ~Arithmetic() { }
 };
 
-class Avar : public ImpArithmetic {
+class Avar : public Arithmetic {
 public: 
-	int getValue();
-	void setValue(int val); 
+	virtual int getValue();
+	virtual string getCode();
 	virtual ~Avar() { }
+	void setValue(int val, string vname); 
 private: 
+	int value;
+	string varName;
+};
+
+// 単純な計算式のみを仮定するためフィールドの型はintのまま
+class Aplus : public Arithmetic {
+public: 
+	virtual int getValue();
+	virtual string getCode();
+	virtual ~Aplus() { }
+	void setValue(Arithmetic* l, Arithmetic* r);
+private: 
+	Arithmetic* left;
+	Arithmetic* right;
 	int value;
 };
 
-class Aplus : public ImpArithmetic {
+class Amult : public Arithmetic {
 public: 
-	Avar getValue();
-	virtual ~Aplus() { }
-	Aplus(Avar l, Avar r);
+	virtual int getValue();
+	virtual string getCode();
+	virtual ~Amult() { }
+	void setValue(Arithmetic* l, Arithmetic* r);
 private: 
-	Avar left;
-	Avar right;
-	Avar value;
+	Arithmetic* left;
+	Arithmetic* right;
+	int value;
 };
 
-class Amult : public ImpArithmetic {
+class Aconst : public Arithmetic {
 public: 
-	Avar getValue();
-	virtual ~Amult() { }
-	Amult(Avar left, Avar right);
+	virtual int getValue();
+	virtual string getCode();
+	virtual ~Aconst() { }
+	void setValue(int val);
 private: 
-	Avar left;
-	Avar right;
-	Avar value;
+	int value;
 };

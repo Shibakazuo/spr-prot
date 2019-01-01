@@ -48,13 +48,35 @@ void Graph::srcGraphInit() {
 	Z20.setNext(&ZZY2, &print);
 	ZZY2.setNext(&Z20);
 
-	AssignNode[7] {XA, YB, Z0, ZZX, ZZY, ZZY2}
+	AssignNode assignNodes[aLength] = {XA, YB, Z0, ZZX, ZZY, ZZY2};
+	cout << sizeof(assignNodes)/sizeof(*assignNodes) << endl;
+	BranchNode branchNodes[bLength] = {X10, Z20};
+	FuncNode funcNodes[bLength] = {print};
+
+
+ 	setNodes(assignNodes, branchNodes, funcNodes);
 
 	entry = &XA;
 	exit = &print;
 	XA.setNext(&Z0);
 
-	cout << XA.getNext()->getLabel() << endl;
-	cout << nodes.aNodes[0].getNext()->getLabel() << endl;
-	cout << entry->getNext()->getLabel() << endl;
+	// cout << XA.getNext()->getLabel() << endl;
+	// cout << nodes.aNodes[0].getNext()->getLabel() << endl;
+	// cout << entry->getNext()->getLabel() << endl;
 }
+
+
+// private
+void Graph::setNodes(AssignNode* assignNodes, BranchNode* branchNodes, FuncNode* funcNodes) {
+	for (int i = 0; i < aLength; i++) {
+		nodes.aNodes[i] = assignNodes[i];
+	}
+	for (int i = 0; i < bLength; i++) {
+		nodes.bNodes[i] = branchNodes[i];
+	}
+	for (int i = 0; i < fLength; ++i) {
+		nodes.fNodes[i] = funcNodes[i];
+	}
+	
+	return;
+}	

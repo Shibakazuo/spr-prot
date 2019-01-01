@@ -2,6 +2,8 @@
 #include <iostream>
 #include <cstdlib>
 #include <ctime>
+#include "ImpArithmetic.h"
+#include "ImpBool.h"
 
 using namespace std;
 
@@ -19,6 +21,7 @@ public:
 	virtual void setLabel(int num) = 0;
 	virtual int getLabel() = 0;
 	virtual INode* getNext() = 0;
+	virtual printCode() = 0;
 };
 
 class AssignNode : public INode {
@@ -31,11 +34,14 @@ public:
 	virtual int getLabel();
 	virtual void setLabel(int num);
 	virtual INode* getNext();
+	void setValue(string vname, int val);
 	void setNext(INode* next);
 private:
 	INode* nextNode;
 	Environment env;
 	int label;
+	string valName;
+	ImpArithmetic* value;
 };
 
 

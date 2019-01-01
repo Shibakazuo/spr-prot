@@ -42,6 +42,20 @@ void AssignNode::setNext(INode* next) {
 	nextNode = next;
 }
 
+void AssignNode::setValue(string vname, Avar val) {
+	valName = vname;
+	value = val;
+
+	switch (vname) {
+		case "x":
+			setEnv(val, env.y, env.z);
+			break;
+		case "y";
+			setEnv(env.x, val, env.z);
+		case "z";
+			setEnv(env.x, env.y, val); 
+	}
+} 
 
 // Branchnode
 BranchNode::BranchNode() {
