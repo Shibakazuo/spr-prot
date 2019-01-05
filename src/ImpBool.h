@@ -7,4 +7,4 @@ using namespace std;
 
 class ImpBool {
 	
-}
+};

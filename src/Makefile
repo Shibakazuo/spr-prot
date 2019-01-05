@@ -263,7 +263,7 @@ target_alias =
 top_build_prefix = ../
 top_builddir = ..
 top_srcdir = ..
-runSPR_SOURCES = Main.cpp Node.cpp Node.h ImpArithmetic.cpp ImpArithmetic.h Graph.cpp Graph.h
+runSPR_SOURCES = Main.cpp Node.cpp Node.h ImpArithmetic.cpp ImpArithmetic.h Graph.cpp Graph.h ImpBool.h
 all: all-am
 
 .SUFFIXES:

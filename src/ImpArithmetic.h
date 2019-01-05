@@ -17,7 +17,7 @@ public:
 	virtual int getValue();
 	virtual string getCode();
 	virtual ~Avar() { }
-	void setValue(int val, string vname); 
+	void setValue(string vname, int val); 
 private: 
 	int value;
 	string varName;

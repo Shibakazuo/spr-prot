@@ -42,20 +42,21 @@ void AssignNode::setNext(INode* next) {
 	nextNode = next;
 }
 
-void AssignNode::setValue(string vname, Avar val) {
-	valName = vname;
-	value = val;
-
-	switch (vname) {
-		case "x":
-			setEnv(val, env.y, env.z);
-			break;
-		case "y";
-			setEnv(env.x, val, env.z);
-		case "z";
-			setEnv(env.x, env.y, val); 
-	}
+void AssignNode::setValue(string vname, Arithmetic* var) {
+	varName = vname;
+	variable = var;
+	if (vname == "x") {
+		setEnv(var->getValue(), env.y, env.z);	
+	} else if (vname == "y") {
+		setEnv(env.x, var->getValue(), env.z);
+	} else {
+		setEnv(env.x, env.y, var->getValue());
+	} 
 } 
+
+string AssignNode::getCode() {
+	return varName + " := " + variable->getCode();
+}
 
 // Branchnode
 BranchNode::BranchNode() {
@@ -92,6 +93,10 @@ void BranchNode::setNext(INode* tNode, INode* fNode) {
 
 void BranchNode::setDirect(bool di) {
 	direct = di;
+}
+
+string BranchNode::getCode() {
+	return "a";
 }
 
 
@@ -134,4 +139,8 @@ void FuncNode::skip() {
 
 void FuncNode::printEnv() {
 	cout << env.x << " " << env.y << " " << env.z << endl; 
+}
+
+string FuncNode::getCode() {
+	return "a";
 }

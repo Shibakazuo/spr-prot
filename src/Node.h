@@ -21,7 +21,7 @@ public:
 	virtual void setLabel(int num) = 0;
 	virtual int getLabel() = 0;
 	virtual INode* getNext() = 0;
-	virtual printCode() = 0;
+	virtual string getCode() = 0;
 };
 
 class AssignNode : public INode {
@@ -34,16 +34,16 @@ public:
 	virtual int getLabel();
 	virtual void setLabel(int num);
 	virtual INode* getNext();
-	void setValue(string vname, int val);
+	virtual string getCode();
+	void setValue(string vname, Arithmetic* var);
 	void setNext(INode* next);
 private:
 	INode* nextNode;
 	Environment env;
 	int label;
-	string valName;
-	ImpArithmetic* value;
+	string varName;
+	Arithmetic* variable;
 };
-
 
 class BranchNode : public INode {
 public: 
@@ -55,6 +55,7 @@ public:
 	virtual void setLabel(int num);
 	virtual int getLabel();
 	virtual INode* getNext();
+	virtual string getCode();
 	void setDirect(bool di);
 	void setNext(INode* tNode, INode* fNode);
 private:
@@ -74,6 +75,7 @@ public:
 	virtual void setEnv(int x, int y, int z);
 	virtual void setLabel(int num);
 	virtual int getLabel();
+	virtual string getCode();
 	void skip();
 	void printEnv();
 	virtual INode* getNext();

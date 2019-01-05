@@ -6,6 +6,9 @@
 const int aLength = 6;
 const int bLength = 2;
 const int fLength = 1;
+const int Ainit = 5;
+const int Binit = 3;
+const int Zinit = 0;
 
 using namespace std;
 

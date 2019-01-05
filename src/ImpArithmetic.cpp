@@ -13,8 +13,8 @@ int Avar::getValue() {
 	return value;
 }
 
-void Avar::setValue(int val, string vname) {
-	value = res;
+void Avar::setValue(string vname, int val) {
+	value = val;
 	varName = vname;
 }
 
@@ -30,11 +30,11 @@ int Aplus::getValue() {
 void Aplus::setValue(Arithmetic* l, Arithmetic* r) {
 	left = l;
 	right = r;
-	value = left + right;
+	value = left->getValue() + right->getValue();
 }
 
 string Aplus::getCode() {
-
+	return left->getCode() + " + " + right->getCode();
 }
 
 // Amult
@@ -49,5 +49,19 @@ void Amult::setValue(Arithmetic* l, Arithmetic* r) {
 }
 
 string Amult::getCode() {
+	return left->getCode() + " * " + right->getCode();
+}
 
+// const
+
+int Aconst::getValue() {
+	return value;
+}
+
+void Aconst::setValue(int val) {
+	value = val;
+} 
+
+string Aconst::getCode() {
+	return to_string(value);
 }
