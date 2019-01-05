@@ -69,6 +69,7 @@ void Graph::srcGraphInit() {
 	A.setValue(Ainit);
 	B.setValue(Binit);
 	Z.setValue(Zinit);
+	
 	// Avar init
 	Z1.setValue("z", 1);
 	ZX.setValue(&Z1, &A);
