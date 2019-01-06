@@ -2,7 +2,6 @@
 #include <iostream>
 #include <cstdlib>
 #include <ctime>
-#include "ImpArithmetic.h"
 #include "ImpBool.h"
 
 using namespace std;
