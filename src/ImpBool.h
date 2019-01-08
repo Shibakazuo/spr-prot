@@ -13,15 +13,19 @@ public:
 	virtual ~ImpBool() { }
 };
 
-class Bcomp : ImpBool {
+class Bless : public ImpBool {
 public:
 	virtual bool getDirect();
 	virtual string getCode();
-	virtual ~Bcomp() { }
-	void setDirect(Arithmetic* l, Arithmetic* r);
+	virtual ~Bless() { }
+	Bless(Arithmetic* l, int r);
+	void setDirect(Arithmetic* l, int r);
+	// Bless(Arithmetic* l, Arithmetic* r);
+	// void setDirect(Arithmetic* l, Arithmetic* r);
 private:
 	Arithmetic* left;
-	Arithmetic* right;
+	int right;
+	// Arithmetic* right;
 	bool direct; 
 };
 

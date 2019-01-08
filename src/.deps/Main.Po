@@ -157,8 +157,8 @@ Main.o: Main.cpp \
   /Library/Developer/CommandLineTools/usr/include/c++/v1/__bsd_locale_defaults.h \
   /Library/Developer/CommandLineTools/usr/include/c++/v1/bitset \
   /Library/Developer/CommandLineTools/usr/include/c++/v1/__bit_reference \
-  Node.h ImpBool.h ImpArithmetic.h Graph.h \
-  /Library/Developer/CommandLineTools/usr/include/c++/v1/list
+  Graph.h /Library/Developer/CommandLineTools/usr/include/c++/v1/list \
+  Node.h ImpBool.h ImpArithmetic.h
 
 /Library/Developer/CommandLineTools/usr/include/c++/v1/cstring:
 
@@ -596,12 +596,12 @@ Main.o: Main.cpp \
 
 /Library/Developer/CommandLineTools/usr/include/c++/v1/__bit_reference:
 
+Graph.h:
+
+/Library/Developer/CommandLineTools/usr/include/c++/v1/list:
+
 Node.h:
 
 ImpBool.h:
 
 ImpArithmetic.h:
-
-Graph.h:
-
-/Library/Developer/CommandLineTools/usr/include/c++/v1/list:

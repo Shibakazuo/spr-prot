@@ -2,7 +2,6 @@
 #include <iostream>
 #include <cstdlib>
 #include <ctime>
-#include "Node.h"
 #include "Graph.h"
 
 using namespace std;

@@ -1,0 +1,24 @@
+# simulating DataPeriod in spr paper
+
+	START
+
+1	X := A	
+2	Y := B
+3	Z := C
+4 	IF X == 0 && Y == 0  
+5		IF Z !== 1  
+6			Z := 3
+		END IF
+	END IF
+7 	PRINT Z
+
+	END
+	
+
+# input value only has 0, 1, 2, X & Y only has 1,0
+# X->0 || Y->0 stand for X || Y = NULL
+# X->1 || Y->1 stand for X || Y != NULL
+# Z->0 stand for Z = NULL
+# Z->1 stand for Z belong to int type
+# Z->2 stand for z belong to string type  
+# when X->0 && Y->0, Z should be Z == 1, if not than stand for error

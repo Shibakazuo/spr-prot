@@ -6,16 +6,34 @@
 
 using namespace std;
 
-void Bcomp::setDirect(Arithmetic* l, Arithmetic* r) {
-	right = l;
-	left = r;
-	direct = left->getValue() > right->getValue() ? true : false;
+Bless::Bless(Arithmetic* l, int r) {
+	right = r;
+	left = l;
+	direct = left->getValue() > right ? true : false;
 }
 
-bool Bcomp::getDirect() {
+void Bless::setDirect(Arithmetic* l, int r) {
+	right = r;
+	left = l;
+	direct = left->getValue() > right ? true : false;
+}
+
+// Bless::Bless(Arithmetic* l, Arithmetic* r) {
+// 	right = l;
+// 	left = r;
+// 	direct = left->getValue() > right->getValue() ? true : false;
+// }
+
+// void Bless::setDirect(Arithmetic* l, Arithmetic* r) {
+// 	right = l;
+// 	left = r;
+// 	direct = left->getValue() > right->getValue() ? true : false;
+// }
+
+bool Bless::getDirect() {
 	return direct;
 }
 
-string Bcomp::getCode() {
-	return left->getCode() + " > " + right->getCode();
+string Bless::getCode() {
+	return left->getCode() + " < " + to_string(right);
 }

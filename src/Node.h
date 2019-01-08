@@ -21,6 +21,7 @@ public:
 	virtual int getLabel() = 0;
 	virtual INode* getNext() = 0;
 	virtual string getCode() = 0;
+	virtual INode* printAndSkip() = 0;
 };
 
 class AssignNode : public INode {
@@ -34,6 +35,7 @@ public:
 	virtual void setLabel(int num);
 	virtual INode* getNext();
 	virtual string getCode();
+	virtual INode* printAndSkip();
 	void setValue(string vname, Arithmetic* var);
 	void setNext(INode* next);
 private:
@@ -55,13 +57,15 @@ public:
 	virtual int getLabel();
 	virtual INode* getNext();
 	virtual string getCode();
-	void setDirect(bool di);
+	virtual INode* printAndSkip();
+	void setDirect(ImpBool* di);
 	void setNext(INode* tNode, INode* fNode);
+	bool ifWhile(INode* node, int label); 
 private:
 	INode* trueNode;
 	INode* falseNode;
 	Environment env;
-	bool direct;
+	ImpBool* direct;
 	int label;
 };
 
@@ -75,6 +79,7 @@ public:
 	virtual void setLabel(int num);
 	virtual int getLabel();
 	virtual string getCode();
+	virtual INode* printAndSkip();
 	void skip();
 	void printEnv();
 	virtual INode* getNext();

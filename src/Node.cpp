@@ -58,6 +58,11 @@ string AssignNode::getCode() {
 	return varName + " := " + variable->getCode();
 }
 
+INode* AssignNode::printAndSkip() {
+	cout << this->getCode() << endl;
+	return nextNode;
+}
+
 // Branchnode
 BranchNode::BranchNode() {
 	trueNode = NULL;
@@ -83,7 +88,7 @@ void BranchNode::setEnv(int x, int y, int z) {
 }
 
 INode* BranchNode::getNext() {
-	return direct ? trueNode : falseNode;
+	return direct->getDirect() ? trueNode : falseNode;
 }
 
 void BranchNode::setNext(INode* tNode, INode* fNode) {
@@ -91,12 +96,35 @@ void BranchNode::setNext(INode* tNode, INode* fNode) {
 	falseNode = fNode;
 }
 
-void BranchNode::setDirect(bool di) {
+void BranchNode::setDirect(ImpBool* di) {
 	direct = di;
 }
 
 string BranchNode::getCode() {
-	return "a";
+	return direct->getCode();
+}
+
+INode* BranchNode::printAndSkip() {
+	if (ifWhile(this, label)) {
+		cout << "WHILE " + direct->getCode() << endl;
+		cout << " " + trueNode->getCode() << endl;
+		cout << "END WHILE" << endl;
+	} else {
+		cout << "IF " + direct->getCode() << endl;
+		cout << " " + trueNode->getCode() << endl;
+		cout << "END IF" << endl;
+	}
+	return falseNode;
+}
+
+bool BranchNode::ifWhile(INode* node, int label) {
+	if (node->getNext() == NULL) {
+		return false;
+	} 
+	if (node->getLabel() == label) {
+		return true;
+	}
+	ifWhile(node->getNext(), label);
 }
 
 
@@ -143,4 +171,8 @@ void FuncNode::printEnv() {
 
 string FuncNode::getCode() {
 	return "a";
+}
+
+INode* FuncNode::printAndSkip() {
+	return NULL;
 }

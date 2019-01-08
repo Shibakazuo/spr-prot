@@ -17,6 +17,7 @@ public:
 	virtual int getValue();
 	virtual string getCode();
 	virtual ~Avar() { }
+	Avar(string vname, int val);
 	void setValue(string vname, int val); 
 private: 
 	int value;
@@ -29,6 +30,7 @@ public:
 	virtual int getValue();
 	virtual string getCode();
 	virtual ~Aplus() { }
+	Aplus(Arithmetic* l, Arithmetic* r); 
 	void setValue(Arithmetic* l, Arithmetic* r);
 private: 
 	Arithmetic* left;
@@ -41,6 +43,7 @@ public:
 	virtual int getValue();
 	virtual string getCode();
 	virtual ~Amult() { }
+	Amult(Arithmetic* l, Arithmetic* r);
 	void setValue(Arithmetic* l, Arithmetic* r);
 private: 
 	Arithmetic* left;
@@ -53,6 +56,7 @@ public:
 	virtual int getValue();
 	virtual string getCode();
 	virtual ~Aconst() { }
+	Aconst(int val);
 	void setValue(int val);
 private: 
 	int value;
