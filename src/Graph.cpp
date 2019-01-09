@@ -52,6 +52,15 @@ void Graph::srcGraphInit() {
 	Avar* lplus6 = new Avar("Z", 0);
 	Avar* rplus6 = new Avar("Y", Binit);
 	Aplus* r6 = new Aplus(lplus6, rplus6);
+	// Z20
+	Avar* l7 = new Avar("Z", 0);
+	Bless* Z7 = new Bless(l7, 20);
+	// ZZY2
+	Avar* lplus8 = new Avar("Z", 0);
+	Avar* rplus8 = new Avar("Y", Ainit);
+	Aplus* r8 = new Aplus(lplus5, rplus5);
+
+
 
 	initANode(&XA, 1, "X", A, &YB);
 	initANode(&YB, 2, "Y", B, &Z0);
@@ -59,7 +68,10 @@ void Graph::srcGraphInit() {
 	initBNode(&X10, 4, X4, &ZZX, &ZZY);
 	initANode(&ZZX, 5, "Z", r5, &ZZY);
 	initANode(&ZZY, 6, "Z", r6, &Z20);
+	initBNode(&Z20, 7, Z7, &ZZY2, &print);
+	initANode(&ZZY2, 8, "Z", r8, &Z20);
 
+	print.setLabel(9);
 	print.setNext(NULL);
 	/*
 	 * setNodes to init graph
@@ -104,6 +116,7 @@ void Graph::setNodes(AssignNode* assignNodes, BranchNode* branchNodes, FuncNode*
 }	
 
 void Graph::printNodes(INode* node) {
-	if(node->getLabel() > 6) return;
+	if(node == NULL) return;	
 	printNodes(node->printAndSkip());
+	
 }

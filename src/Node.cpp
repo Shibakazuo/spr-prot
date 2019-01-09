@@ -105,7 +105,7 @@ string BranchNode::getCode() {
 }
 
 INode* BranchNode::printAndSkip() {
-	if (ifWhile(this, label)) {
+	if (ifWhile(trueNode, label)) {
 		cout << "WHILE " + direct->getCode() << endl;
 		cout << " " + trueNode->getCode() << endl;
 		cout << "END WHILE" << endl;
@@ -123,7 +123,7 @@ bool BranchNode::ifWhile(INode* node, int label) {
 	} 
 	if (node->getLabel() == label) {
 		return true;
-	}
+	} 
 	ifWhile(node->getNext(), label);
 }
 
@@ -174,5 +174,6 @@ string FuncNode::getCode() {
 }
 
 INode* FuncNode::printAndSkip() {
+	cout << "PRINT" << endl; 
 	return NULL;
 }
