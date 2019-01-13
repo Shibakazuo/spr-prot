@@ -20,19 +20,6 @@ void Graph::srcGraphInit() {
 	FuncNode print;
 
 	/*
-	 * init Nodes
-	 */ 
-	XA.setLabel(1);
-	YB.setLabel(2);
-	Z0.setLabel(3);
-	X10.setLabel(4);
-	ZZX.setLabel(5);
-	ZZY.setLabel(6);
-	Z20.setLabel(7);
-	ZZY2.setLabel(8);
-	print.setLabel(9);
-
-	/*
 	 * set variables
 	 */ 
 	// XA
@@ -58,11 +45,10 @@ void Graph::srcGraphInit() {
 	// ZZY2
 	Avar* lplus8 = new Avar("Z", 0);
 	Avar* rplus8 = new Avar("Y", Ainit);
-	Aplus* r8 = new Aplus(lplus5, rplus5);
-
-
+	Aplus* r8 = new Aplus(lplus8, rplus8);
 
 	initANode(&XA, 1, "X", A, &YB);
+	XA.setEnv(0, 0, 0);
 	initANode(&YB, 2, "Y", B, &Z0);
 	initANode(&Z0, 3, "Z", r3, &X10);
 	initBNode(&X10, 4, X4, &ZZX, &ZZY);
@@ -70,9 +56,9 @@ void Graph::srcGraphInit() {
 	initANode(&ZZY, 6, "Z", r6, &Z20);
 	initBNode(&Z20, 7, Z7, &ZZY2, &print);
 	initANode(&ZZY2, 8, "Z", r8, &Z20);
-
 	print.setLabel(9);
 	print.setNext(NULL);
+
 	/*
 	 * setNodes to init graph
 	 */ 
@@ -83,8 +69,15 @@ void Graph::srcGraphInit() {
 	entry = &nodes.aNodes[0];
 	exit = &nodes.fNodes[0];
 
-
+	/*
+	 * run test
+	 */ 
 	printNodes(entry);
+	// runTest();
+}
+
+void Graph::runTest() {
+	testGraph(entry);
 }
 
 
@@ -114,6 +107,13 @@ void Graph::setNodes(AssignNode* assignNodes, BranchNode* branchNodes, FuncNode*
 	
 	return;
 }	
+
+void Graph::testGraph(INode* node) {
+	if (node == NULL) return;
+	node->runCode();
+	// cout << "a" << endl;
+	testGraph(node->getNext());
+}
 
 void Graph::printNodes(INode* node) {
 	if(node == NULL) return;	

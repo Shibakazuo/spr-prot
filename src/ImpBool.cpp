@@ -9,13 +9,13 @@ using namespace std;
 Bless::Bless(Arithmetic* l, int r) {
 	right = r;
 	left = l;
-	direct = left->getValue() > right ? true : false;
+	direct = left->getValue() < right ? true : false;
 }
 
 void Bless::setDirect(Arithmetic* l, int r) {
 	right = r;
 	left = l;
-	direct = left->getValue() > right ? true : false;
+	direct = left->getValue() < right ? true : false;
 }
 
 // Bless::Bless(Arithmetic* l, Arithmetic* r) {
@@ -36,4 +36,12 @@ bool Bless::getDirect() {
 
 string Bless::getCode() {
 	return left->getCode() + " < " + to_string(right);
+}
+
+void Bless::resetDirect() {
+	direct = left->getValue() < right ? true : false;
+}
+
+Arithmetic* Bless::getAvar() {
+	return left;
 }

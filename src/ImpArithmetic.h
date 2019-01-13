@@ -9,6 +9,10 @@ class Arithmetic {
 public: 
 	virtual int getValue() = 0;
 	virtual string getCode() = 0;
+	virtual void setResult(int res) = 0;
+	virtual void setValue(Arithmetic* l, Arithmetic* r) = 0; 
+	virtual bool isVarOrConst() = 0;
+	virtual bool isVar() = 0;
 	virtual ~Arithmetic() { }
 };
 
@@ -16,7 +20,11 @@ class Avar : public Arithmetic {
 public: 
 	virtual int getValue();
 	virtual string getCode();
+	virtual void setResult(int res);
 	virtual ~Avar() { }
+	// should be error
+	virtual void setValue(Arithmetic* l, Arithmetic* r) {};
+	virtual bool isVarOrConst();
 	Avar(string vname, int val);
 	void setValue(string vname, int val); 
 private: 
@@ -29,9 +37,12 @@ class Aplus : public Arithmetic {
 public: 
 	virtual int getValue();
 	virtual string getCode();
+	virtual void setResult(int res);
 	virtual ~Aplus() { }
+	virtual bool isVarOrConst();
+	// should be error
 	Aplus(Arithmetic* l, Arithmetic* r); 
-	void setValue(Arithmetic* l, Arithmetic* r);
+	virtual void setValue(Arithmetic* l, Arithmetic* r);
 private: 
 	Arithmetic* left;
 	Arithmetic* right;
@@ -42,9 +53,12 @@ class Amult : public Arithmetic {
 public: 
 	virtual int getValue();
 	virtual string getCode();
+	virtual void setResult(int res);
 	virtual ~Amult() { }
+	// should be error
+	virtual bool isVarOrConst();
 	Amult(Arithmetic* l, Arithmetic* r);
-	void setValue(Arithmetic* l, Arithmetic* r);
+	virtual void setValue(Arithmetic* l, Arithmetic* r);
 private: 
 	Arithmetic* left;
 	Arithmetic* right;
@@ -55,9 +69,12 @@ class Aconst : public Arithmetic {
 public: 
 	virtual int getValue();
 	virtual string getCode();
+	virtual void setResult(int res);
+	virtual bool isVarOrConst();
+	// should be error
+	virtual void setValue(Arithmetic* l, Arithmetic* r) { };
 	virtual ~Aconst() { }
 	Aconst(int val);
-	void setValue(int val);
 private: 
 	int value;
 };

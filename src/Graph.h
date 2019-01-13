@@ -25,7 +25,7 @@ public:
 	Graph();
 	~Graph() { };
 	void srcGraphInit();
-	void RunTest();
+	void runTest();
 private: 
 	InitNodes nodes;
 	Environment input;
@@ -35,4 +35,5 @@ private:
 	void initBNode(BranchNode* target, int label, ImpBool* direction, INode* tNode, INode* fNode);
 	void setNodes(AssignNode* assignNodes, BranchNode* branchNodes, FuncNode* funcNodes);
 	void printNodes(INode* node);
+	void testGraph(INode* node);
 };

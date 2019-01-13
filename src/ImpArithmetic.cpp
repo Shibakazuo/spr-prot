@@ -23,9 +23,18 @@ void Avar::setValue(string vname, int val) {
 	varName = vname;
 }
 
+void Avar::setResult(int res) {
+	value = res;
+}
+
 string Avar::getCode() {
 	return varName;
 }
+
+bool Avar::isVarOrConst() {
+	return true;
+}
+
 
 // Aplus
 Aplus::Aplus(Arithmetic* l, Arithmetic* r) {
@@ -46,6 +55,14 @@ void Aplus::setValue(Arithmetic* l, Arithmetic* r) {
 
 string Aplus::getCode() {
 	return left->getCode() + " + " + right->getCode();
+}
+
+void Aplus::setResult(int res) {
+	value = res;
+}
+
+bool Aplus::isVarOrConst() {
+	return false;
 }
 
 // Amult
@@ -69,6 +86,15 @@ string Amult::getCode() {
 	return left->getCode() + " * " + right->getCode();
 }
 
+void Amult::setResult(int res) {
+	value = res;
+}
+
+bool Amult::isVarOrConst() {
+	return false;
+}
+
+
 // const
 Aconst::Aconst(int val) {
 	value = val;
@@ -78,10 +104,14 @@ int Aconst::getValue() {
 	return value;
 }
 
-void Aconst::setValue(int val) {
-	value = val;
-} 
-
 string Aconst::getCode() {
 	return to_string(value);
+}
+
+void Aconst::setResult(int res) {
+	value = res;
+}
+
+bool Aconst::isVarOrConst() {
+	return true;
 }

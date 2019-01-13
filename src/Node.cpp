@@ -45,13 +45,6 @@ void AssignNode::setNext(INode* next) {
 void AssignNode::setValue(string vname, Arithmetic* var) {
 	varName = vname;
 	variable = var;
-	if (vname == "x") {
-		setEnv(var->getValue(), env.y, env.z);	
-	} else if (vname == "y") {
-		setEnv(env.x, var->getValue(), env.z);
-	} else {
-		setEnv(env.x, env.y, var->getValue());
-	} 
 } 
 
 string AssignNode::getCode() {
@@ -61,6 +54,27 @@ string AssignNode::getCode() {
 INode* AssignNode::printAndSkip() {
 	cout << this->getCode() << endl;
 	return nextNode;
+}
+
+// コード実行、次のノードがNULLじゃない場合envを渡す
+void AssignNode::runCode() { 
+	// 右辺が引数一つのみの場合
+	if (variable->isVarOrConst()) {
+		if (varName == "X") {
+			setEnv(variable->getValue(), env.y, env.z);
+		} else if (varName == "Y") {
+			setEnv(env.x, variable->getValue(), env.z);
+		} else {
+			setEnv(env.x, env.y, variable->getValue());
+		} 
+	}
+	
+
+	if (nextNode != NULL) {
+		nextNode->setEnv(env.x, env.y, env.z);	
+	}
+	// 代入の右辺の引数が2つか1つによって代入を分ける
+	cout << "x = " << env.x << " y = " << env.y << " z = " << env.z << endl; 
 }
 
 // Branchnode
@@ -118,15 +132,29 @@ INode* BranchNode::printAndSkip() {
 }
 
 bool BranchNode::ifWhile(INode* node, int label) {
-	if (node->getNext() == NULL) {
-		return false;
-	} 
-	if (node->getLabel() == label) {
+	if (node->getNext()->getLabel() == label) {
 		return true;
-	} 
-	ifWhile(node->getNext(), label);
+	}
+	return false;
 }
 
+void BranchNode::runCode() {
+	if (direct->getAvar()->getCode() == "X") {
+		// cout << "pass" << endl;
+		direct->getAvar()->setResult(env.x);
+		direct->resetDirect();
+	} else if (direct->getAvar()->getCode() == "Y") {
+		direct->getAvar()->setResult(env.y);
+		direct->resetDirect();
+	} else {
+		direct->getAvar()->setResult(env.z);
+		direct->resetDirect();
+	} 
+	if (getNext() != NULL) {
+		getNext()->setEnv(env.x, env.y, env.z);	
+	}
+	cout << getCode() << " : x = " << env.x << " y = " << env.y << " z = " << env.z << endl; 
+}
 
 // FuncNode
 FuncNode::FuncNode() {
@@ -176,4 +204,7 @@ string FuncNode::getCode() {
 INode* FuncNode::printAndSkip() {
 	cout << "PRINT" << endl; 
 	return NULL;
+}
+void FuncNode::runCode() {
+	 printEnv();
 }
