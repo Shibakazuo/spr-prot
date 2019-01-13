@@ -17,6 +17,7 @@ MacOS High Sierra 10.13.6
 
 Compiled by Clang++, version: Apple LLVM version 10.0.0 (clang-1000.10.44.4)
 
-## Test code path
+## Test code 
 
-src/CFG/ 
+IMP ver: src/CFG/ 
+CPP var: src/cppTest
