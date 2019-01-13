@@ -46,6 +46,7 @@ private:
 	int label;
 	string varName;
 	Arithmetic* variable;
+	int getSelectedEnv(string name);
 };
 
 class BranchNode : public INode {

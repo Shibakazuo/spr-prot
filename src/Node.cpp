@@ -56,25 +56,41 @@ INode* AssignNode::printAndSkip() {
 	return nextNode;
 }
 
-// コード実行、次のノードがNULLじゃない場合envを渡す
+// コード実行、また次のノードがNULLじゃない場合envを渡す
 void AssignNode::runCode() { 
-	// 右辺が引数一つのみの場合
-	if (variable->isVarOrConst()) {
-		if (varName == "X") {
-			setEnv(variable->getValue(), env.y, env.z);
-		} else if (varName == "Y") {
-			setEnv(env.x, variable->getValue(), env.z);
-		} else {
-			setEnv(env.x, env.y, variable->getValue());
-		} 
+	// テスト例では右辺が一つの場合は初期値のみであるため数値を代入する必要がない。	
+	if (! variable->isVarOrConst()) {
+		// 右辺が引数2つ以上の場合
+		string vlname = &variable->getCode().front();
+		string vrname = &variable->getCode().back();
+		Avar* vleft = new Avar(vlname, getSelectedEnv(vlname));
+		Avar* vright = new Avar(vrname, getSelectedEnv(vrname));
+		variable->setValue(vleft, vright);
 	}
-	
+
+	if (varName == "X") {
+		setEnv(variable->getValue(), env.y, env.z);
+	} else if (varName == "Y") {
+		setEnv(env.x, variable->getValue(), env.z);
+	} else {
+		setEnv(env.x, env.y, variable->getValue());
+	} 	
 
 	if (nextNode != NULL) {
 		nextNode->setEnv(env.x, env.y, env.z);	
 	}
-	// 代入の右辺の引数が2つか1つによって代入を分ける
-	cout << "x = " << env.x << " y = " << env.y << " z = " << env.z << endl; 
+
+	cout << label << " x = " << env.x << " y = " << env.y << " z = " << env.z << endl; 
+}
+
+int AssignNode::getSelectedEnv(string name) {
+	if (name == "X") {
+		return env.x;
+	} else if (name == "Y") {
+		return env.y;
+	} else {
+		return env.z;
+	}
 }
 
 // Branchnode
@@ -153,7 +169,7 @@ void BranchNode::runCode() {
 	if (getNext() != NULL) {
 		getNext()->setEnv(env.x, env.y, env.z);	
 	}
-	cout << getCode() << " : x = " << env.x << " y = " << env.y << " z = " << env.z << endl; 
+	cout << label << " " << getCode() << " : x = " << env.x << " y = " << env.y << " z = " << env.z << endl; 
 }
 
 // FuncNode

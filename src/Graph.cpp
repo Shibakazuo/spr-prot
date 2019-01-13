@@ -73,7 +73,7 @@ void Graph::srcGraphInit() {
 	 * run test
 	 */ 
 	printNodes(entry);
-	// runTest();
+	runTest();
 }
 
 void Graph::runTest() {
@@ -109,6 +109,7 @@ void Graph::setNodes(AssignNode* assignNodes, BranchNode* branchNodes, FuncNode*
 }	
 
 void Graph::testGraph(INode* node) {
+	// if (node->getLabel() > 6) return; 
 	if (node == NULL) return;
 	node->runCode();
 	// cout << "a" << endl;

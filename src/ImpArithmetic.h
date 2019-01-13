@@ -12,7 +12,6 @@ public:
 	virtual void setResult(int res) = 0;
 	virtual void setValue(Arithmetic* l, Arithmetic* r) = 0; 
 	virtual bool isVarOrConst() = 0;
-	virtual bool isVar() = 0;
 	virtual ~Arithmetic() { }
 };
 
@@ -25,6 +24,7 @@ public:
 	// should be error
 	virtual void setValue(Arithmetic* l, Arithmetic* r) {};
 	virtual bool isVarOrConst();
+	Avar() {};
 	Avar(string vname, int val);
 	void setValue(string vname, int val); 
 private: 
@@ -40,9 +40,8 @@ public:
 	virtual void setResult(int res);
 	virtual ~Aplus() { }
 	virtual bool isVarOrConst();
-	// should be error
-	Aplus(Arithmetic* l, Arithmetic* r); 
 	virtual void setValue(Arithmetic* l, Arithmetic* r);
+	Aplus(Arithmetic* l, Arithmetic* r); 
 private: 
 	Arithmetic* left;
 	Arithmetic* right;
@@ -55,10 +54,9 @@ public:
 	virtual string getCode();
 	virtual void setResult(int res);
 	virtual ~Amult() { }
-	// should be error
 	virtual bool isVarOrConst();
-	Amult(Arithmetic* l, Arithmetic* r);
 	virtual void setValue(Arithmetic* l, Arithmetic* r);
+	Amult(Arithmetic* l, Arithmetic* r);
 private: 
 	Arithmetic* left;
 	Arithmetic* right;
