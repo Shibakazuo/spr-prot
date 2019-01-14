@@ -47,33 +47,26 @@ void Graph::srcGraphInit() {
 	Avar* rplus8 = new Avar("Y", Ainit);
 	Aplus* r8 = new Aplus(lplus8, rplus8);
 
-	initANode(&XA, 1, "X", A, &YB);
-	XA.setEnv(0, 0, 0);
-	initANode(&YB, 2, "Y", B, &Z0);
-	initANode(&Z0, 3, "Z", r3, &X10);
-	initBNode(&X10, 4, X4, &ZZX, &ZZY);
-	initANode(&ZZX, 5, "Z", r5, &ZZY);
-	initANode(&ZZY, 6, "Z", r6, &Z20);
-	initBNode(&Z20, 7, Z7, &ZZY2, &print);
-	initANode(&ZZY2, 8, "Z", r8, &Z20);
-	print.setLabel(9);
-	print.setNext(NULL);
+	initANode(&nodes.aNodes[0], 1, "X", A, &nodes.aNodes[1]);
+	nodes.aNodes[0].setEnv(0, 0, 0);
+	initANode(&nodes.aNodes[1], 2, "Y", B, &nodes.aNodes[2]);
+	initANode(&nodes.aNodes[2], 3, "Z", r3, &nodes.bNodes[0]);
+	initBNode(&nodes.bNodes[0], 4, X4, &nodes.aNodes[3], &nodes.aNodes[4]);
+	initANode(&nodes.aNodes[3], 5, "Z", r5, &nodes.aNodes[4]);
+	initANode(&nodes.aNodes[4], 6, "Z", r6, &nodes.bNodes[1]);
+	initBNode(&nodes.bNodes[1], 7, Z7, &nodes.aNodes[5], &nodes.fNodes[0]);
+	initANode(&nodes.aNodes[5], 8, "Z", r8, &nodes.bNodes[1]);
+	nodes.fNodes[0].setLabel(9);
+	nodes.fNodes[0].setNext(NULL);
 
-	/*
-	 * setNodes to init graph
-	 */ 
-	AssignNode assignNodes[aLength] = {XA, YB, Z0, ZZX, ZZY, ZZY2};
-	BranchNode branchNodes[bLength] = {X10, Z20};
-	FuncNode funcNodes[fLength] = {print};
- 	setNodes(assignNodes, branchNodes, funcNodes);
 	entry = &nodes.aNodes[0];
 	exit = &nodes.fNodes[0];
 
 	/*
-	 * run test
+	 * print src code
 	 */ 
+
 	printNodes(entry);
-	// runTest();
 }
 
 void Graph::runTest() {
