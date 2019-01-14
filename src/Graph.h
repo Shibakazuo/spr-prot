@@ -26,6 +26,7 @@ public:
 	~Graph() { };
 	void srcGraphInit();
 	void runTest();
+	INode* getEntry();
 private: 
 	InitNodes nodes;
 	Environment input;

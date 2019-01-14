@@ -73,11 +73,15 @@ void Graph::srcGraphInit() {
 	 * run test
 	 */ 
 	printNodes(entry);
-	runTest();
+	// runTest();
 }
 
 void Graph::runTest() {
 	testGraph(entry);
+}
+
+INode* Graph::getEntry() {
+	return entry;
 }
 
 
@@ -99,7 +103,9 @@ void Graph::setNodes(AssignNode* assignNodes, BranchNode* branchNodes, FuncNode*
 		nodes.aNodes[i] = assignNodes[i];
 	}
 	for (int i = 0; i < bLength; i++) {
+		cout << &assignNodes[i] << endl;
 		nodes.bNodes[i] = branchNodes[i];
+		cout << &nodes.bNodes[i] << endl;
 	}
 	for (int i = 0; i < fLength; ++i) {
 		nodes.fNodes[i] = funcNodes[i];
