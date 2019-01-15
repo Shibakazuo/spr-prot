@@ -15,9 +15,9 @@ const int Zinit = 0;
 using namespace std;
 
 struct InitNodes {
-	AssignNode aNodes[aLength];
-	BranchNode bNodes[bLength];
-	FuncNode fNodes[fLength];
+	AssignNode aNodes[20];
+	BranchNode bNodes[10];
+	FuncNode fNodes[10];
 };
 
 class Graph {

@@ -8,8 +8,8 @@ using namespace std;
 
 int main() {
 	Graph src, test;
-
 	src.srcGraphInit();
-	src.runTest();
+	test = src;
+	test.runTest();
     return 0;
 }
