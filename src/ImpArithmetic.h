@@ -22,7 +22,7 @@ public:
 	virtual void setResult(int res);
 	virtual ~Avar() { }
 	// should be error
-	virtual void setValue(Arithmetic* l, Arithmetic* r) {};
+	virtual void setValue(Arithmetic* l, Arithmetic* r) { };
 	virtual bool isVarOrConst();
 	Avar() {};
 	Avar(string vname, int val);

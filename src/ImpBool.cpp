@@ -18,18 +18,6 @@ void Bless::setDirect(Arithmetic* l, int r) {
 	direct = left->getValue() < right ? true : false;
 }
 
-// Bless::Bless(Arithmetic* l, Arithmetic* r) {
-// 	right = l;
-// 	left = r;
-// 	direct = left->getValue() > right->getValue() ? true : false;
-// }
-
-// void Bless::setDirect(Arithmetic* l, Arithmetic* r) {
-// 	right = l;
-// 	left = r;
-// 	direct = left->getValue() > right->getValue() ? true : false;
-// }
-
 bool Bless::getDirect() {
 	return direct;
 }
@@ -45,3 +33,30 @@ void Bless::resetDirect() {
 Arithmetic* Bless::getAvar() {
 	return left;
 }
+
+// Bequal
+void Beuqal::setDirect(Arithmetic* l, int r) {
+	right = r;
+	left = l;
+	direct = left->getValue() == right ? true : false;
+}
+
+bool Beuqal::getDirect() {
+	return direct;
+}
+
+string Beuqal::getCode() {
+	return left->getCode() + " == " + to_string(right);
+}
+
+void Beuqal::resetDirect() {
+	direct = left->getValue() == right ? true : false;
+}
+
+Arithmetic* Beuqal::getAvar() {
+	return left;
+}
+
+
+
+

@@ -22,15 +22,50 @@ public:
 	virtual void resetDirect();
 	virtual Arithmetic* getAvar();
 	virtual ~Bless() { }
+	// 今回は左辺変数右辺定数で設定するためintにする
 	Bless(Arithmetic* l, int r);
 	void setDirect(Arithmetic* l, int r);
-	// Bless(Arithmetic* l, Arithmetic* r);
-	// void setDirect(Arithmetic* l, Arithmetic* r);
 private:
 	Arithmetic* left;
 	int right;
-	// Arithmetic* right;
 	bool direct; 
 };
 
+class Bequal : public ImpBool {
+public:
+	virtual bool getDirect();
+	virtual string getCode();
+	virtual Arithmetic* getAvar();
+	virtual void resetDirect();
+	virtual ~Band() { };
+private:
+	Arithmetic* left;
+	int right;
+	bool direct; 
+}
 
+class Bnoteq : public ImpBool {
+public: 
+	virtual bool getDirect();
+	virtual string getCode();
+	virtual Arithmetic* getAvar();
+	virtual void resetDirect();
+	virtual ~Band() { }
+private: 
+	Arithmetic* left;
+	int right;
+	bool direct; 
+}
+
+class Band : public ImpBool {
+public: 
+	virtual bool getDirect();
+	virtual string getCode();
+	virtual Arithmetic* getAvar();
+	virtual void resetDirect();
+	virtual ~Band() { }
+private:
+	ImpBool* left;
+	ImpBool* right;
+	bool direct;
+};

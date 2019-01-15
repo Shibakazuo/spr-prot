@@ -111,7 +111,6 @@ void Graph::testGraph(INode* node) {
 	// if (node->getLabel() > 6) return; 
 	if (node == NULL) return;
 	node->runCode();
-	// cout << "a" << endl;
 	testGraph(node->getNext());
 }
 
