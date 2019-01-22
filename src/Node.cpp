@@ -2,6 +2,8 @@
 #include <iostream>
 #include <cstdlib>
 #include <ctime>
+#include <string>
+#include <typeinfo>
 #include "Node.h"
 
 using namespace std;
@@ -29,9 +31,9 @@ int AssignNode::getLabel() {
 }
 
 void AssignNode::setEnv(int x, int y, int z) {
-	env.x = x;
-	env.y = y;
-	env.z = z;
+	env.student = x;
+	env.teacher = y;
+	env.sum = z;
 }
 
 INode* AssignNode::getNext() {
@@ -61,35 +63,42 @@ void AssignNode::runCode() {
 	// テスト例では右辺が一つの場合は初期値のみであるため数値を代入する必要がない。	
 	if (! variable->isVarOrConst()) {
 		// 右辺が引数2つ以上の場合
-		string vlname = &variable->getCode().front();
-		string vrname = &variable->getCode().back();
-		Avar* vleft = new Avar(vlname, getSelectedEnv(vlname));
-		Avar* vright = new Avar(vrname, getSelectedEnv(vrname));
-		variable->setValue(vleft, vright);
+		string vlname = variable->getLeft()->getCode();
+		string vrname = variable->getRight()->getCode();
+		if (getSelectedEnv(variable->getRight()->getCode()) == -1) {
+			variable->getLeft()->setResult(getSelectedEnv(vlname));
+			variable->recalc();
+		} else {
+			variable->getLeft()->setResult(getSelectedEnv(vlname));
+			variable->getRight()->setResult(getSelectedEnv(vrname));
+			variable->recalc();
+		}	
 	}
 
-	if (varName == "X") {
-		setEnv(variable->getValue(), env.y, env.z);
-	} else if (varName == "Y") {
-		setEnv(env.x, variable->getValue(), env.z);
+	if (varName == "student") {
+		setEnv(variable->getValue(), env.teacher, env.sum);
+	} else if (varName == "teacher") {
+		setEnv(env.student, variable->getValue(), env.sum);
 	} else {
-		setEnv(env.x, env.y, variable->getValue());
-	} 	
+		setEnv(env.student, env.teacher, variable->getValue()); 
+	}
 
 	if (nextNode != NULL) {
-		nextNode->setEnv(env.x, env.y, env.z);	
+		nextNode->setEnv(env.student, env.teacher, env.sum);	
 	}
 
-	cout << label << " x = " << env.x << " y = " << env.y << " z = " << env.z << endl; 
+	cout << label << " student = " << env.student << " teacher = " << env.teacher << " sum = " << env.sum << endl; 
 }
 
 int AssignNode::getSelectedEnv(string name) {
-	if (name == "X") {
-		return env.x;
-	} else if (name == "Y") {
-		return env.y;
+	if (name == "student") {
+		return env.student;
+	} else if (name == "teacher") {
+		return env.teacher;
+	} else if (name == "sum"){
+		return env.sum;
 	} else {
-		return env.z;
+		return -1;
 	}
 }
 
@@ -112,9 +121,9 @@ void BranchNode::setLabel(int num) {
 }
 
 void BranchNode::setEnv(int x, int y, int z) {
-	env.x = x;
-	env.y = y;
-	env.z = z;
+	env.student = x;
+	env.teacher = y;
+	env.sum = z;
 }
 
 INode* BranchNode::getNext() {
@@ -155,21 +164,22 @@ bool BranchNode::ifWhile(INode* node, int label) {
 }
 
 void BranchNode::runCode() {
-	if (direct->getAvar()->getCode() == "X") {
+	if (direct->getAvar()->getCode() == "student") {
 		// cout << "pass" << endl;
-		direct->getAvar()->setResult(env.x);
+		direct->getAvar()->setResult(env.student);
 		direct->resetDirect();
-	} else if (direct->getAvar()->getCode() == "Y") {
-		direct->getAvar()->setResult(env.y);
+	} else if (direct->getAvar()->getCode() == "teacher") {
+		direct->getAvar()->setResult(env.teacher);
 		direct->resetDirect();
 	} else {
-		direct->getAvar()->setResult(env.z);
+		direct->getAvar()->setResult(env.sum);
 		direct->resetDirect();
-	} 
-	if (getNext() != NULL) {
-		getNext()->setEnv(env.x, env.y, env.z);	
 	}
-	cout << label << " " << getCode() << " : x = " << env.x << " y = " << env.y << " z = " << env.z << endl; 
+
+	if (getNext() != NULL) {
+		getNext()->setEnv(env.student, env.teacher, env.sum);	
+	}
+	cout << label << " if " << getCode() << " : student = " << env.student << " teacher = " << env.teacher <<  " sum = " << env.sum << endl; 
 }
 
 // FuncNode
@@ -186,9 +196,9 @@ int FuncNode::getLabel() {
 }
 
 void FuncNode::setEnv (int x, int y, int z) {
-	env.x = x;
-	env.y = y;
-	env.z = z;
+	env.student = x;
+	env.teacher = y;
+	env.sum = z;
 } 
 
 void FuncNode::setLabel(int num) {
@@ -210,7 +220,7 @@ void FuncNode::skip() {
 }
 
 void FuncNode::printEnv() {
-	cout << env.x << " " << env.y << " " << env.z << endl; 
+	cout << env.student << " " << env.teacher << " " << env.sum << endl; 
 }
 
 string FuncNode::getCode() {

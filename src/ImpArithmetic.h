@@ -2,6 +2,7 @@
 #include <iostream>
 #include <cstdlib>
 #include <ctime>
+#include <Function.h>
 
 using namespace std;
 
@@ -10,8 +11,10 @@ public:
 	virtual int getValue() = 0;
 	virtual string getCode() = 0;
 	virtual void setResult(int res) = 0;
-	virtual void setValue(Arithmetic* l, Arithmetic* r) = 0; 
+	virtual void recalc() = 0;
 	virtual bool isVarOrConst() = 0;
+	virtual Arithmetic* getLeft() = 0;
+	virtual Arithmetic* getRight() = 0;
 	virtual ~Arithmetic() { }
 };
 
@@ -21,9 +24,11 @@ public:
 	virtual string getCode();
 	virtual void setResult(int res);
 	virtual ~Avar() { }
-	// should be error
-	virtual void setValue(Arithmetic* l, Arithmetic* r) { };
 	virtual bool isVarOrConst();
+	// error output shouldn't write here
+	virtual Arithmetic* getLeft() { Function::pntError(); return NULL; };
+	virtual Arithmetic* getRight() { Function::pntError(); return NULL; };
+	virtual void recalc() { Function::pntError(); };
 	Avar() {};
 	Avar(string vname, int val);
 	void setValue(string vname, int val); 
@@ -40,23 +45,10 @@ public:
 	virtual void setResult(int res);
 	virtual ~Aplus() { }
 	virtual bool isVarOrConst();
-	virtual void setValue(Arithmetic* l, Arithmetic* r);
+	virtual Arithmetic* getLeft();
+	virtual Arithmetic* getRight();
+	virtual void recalc();
 	Aplus(Arithmetic* l, Arithmetic* r); 
-private: 
-	Arithmetic* left;
-	Arithmetic* right;
-	int value;
-};
-
-class Amult : public Arithmetic {
-public: 
-	virtual int getValue();
-	virtual string getCode();
-	virtual void setResult(int res);
-	virtual ~Amult() { }
-	virtual bool isVarOrConst();
-	virtual void setValue(Arithmetic* l, Arithmetic* r);
-	Amult(Arithmetic* l, Arithmetic* r);
 private: 
 	Arithmetic* left;
 	Arithmetic* right;
@@ -69,9 +61,10 @@ public:
 	virtual string getCode();
 	virtual void setResult(int res);
 	virtual bool isVarOrConst();
-	// should be error
-	virtual void setValue(Arithmetic* l, Arithmetic* r) { };
 	virtual ~Aconst() { }
+	virtual Arithmetic* getLeft() { Function::pntError(); return NULL; };
+	virtual Arithmetic* getRight() { Function::pntError(); return NULL; };
+	virtual void recalc() { Function::pntError();};
 	Aconst(int val);
 private: 
 	int value;

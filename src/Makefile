@@ -100,7 +100,8 @@ CONFIG_CLEAN_VPATH_FILES =
 am__installdirs = "$(DESTDIR)$(bindir)"
 PROGRAMS = $(bin_PROGRAMS)
 am_runSPR_OBJECTS = Main.$(OBJEXT) Node.$(OBJEXT) \
-	ImpArithmetic.$(OBJEXT) Graph.$(OBJEXT) ImpBool.$(OBJEXT)
+	ImpArithmetic.$(OBJEXT) Graph.$(OBJEXT) ImpBool.$(OBJEXT) \
+	Function.$(OBJEXT) ProgState.$(OBJEXT)
 runSPR_OBJECTS = $(am_runSPR_OBJECTS)
 runSPR_LDADD = $(LDADD)
 AM_V_P = $(am__v_P_$(V))
@@ -118,9 +119,10 @@ am__v_at_1 =
 DEFAULT_INCLUDES = -I. -I$(top_builddir)
 depcomp = $(SHELL) $(top_srcdir)/depcomp
 am__maybe_remake_depfiles = depfiles
-am__depfiles_remade = ./$(DEPDIR)/Graph.Po \
+am__depfiles_remade = ./$(DEPDIR)/Function.Po ./$(DEPDIR)/Graph.Po \
 	./$(DEPDIR)/ImpArithmetic.Po ./$(DEPDIR)/ImpBool.Po \
-	./$(DEPDIR)/Main.Po ./$(DEPDIR)/Node.Po
+	./$(DEPDIR)/Main.Po ./$(DEPDIR)/Node.Po \
+	./$(DEPDIR)/ProgState.Po
 am__mv = mv -f
 CXXCOMPILE = $(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) \
 	$(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS)
@@ -263,7 +265,7 @@ target_alias =
 top_build_prefix = ../
 top_builddir = ..
 top_srcdir = ..
-runSPR_SOURCES = Main.cpp Node.cpp Node.h ImpArithmetic.cpp ImpArithmetic.h Graph.cpp Graph.h ImpBool.h ImpBool.cpp
+runSPR_SOURCES = Main.cpp Node.cpp Node.h ImpArithmetic.cpp ImpArithmetic.h Graph.cpp Graph.h ImpBool.h ImpBool.cpp Function.cpp Function.h ProgState.cpp ProgState.h
 all: all-am
 
 .SUFFIXES:
@@ -350,11 +352,13 @@ mostlyclean-compile:
 distclean-compile:
 	-rm -f *.tab.c
 
+include ./$(DEPDIR)/Function.Po # am--include-marker
 include ./$(DEPDIR)/Graph.Po # am--include-marker
 include ./$(DEPDIR)/ImpArithmetic.Po # am--include-marker
 include ./$(DEPDIR)/ImpBool.Po # am--include-marker
 include ./$(DEPDIR)/Main.Po # am--include-marker
 include ./$(DEPDIR)/Node.Po # am--include-marker
+include ./$(DEPDIR)/ProgState.Po # am--include-marker
 
 $(am__depfiles_remade):
 	@$(MKDIR_P) $(@D)
@@ -503,11 +507,13 @@ clean: clean-am
 clean-am: clean-binPROGRAMS clean-generic mostlyclean-am
 
 distclean: distclean-am
-		-rm -f ./$(DEPDIR)/Graph.Po
+		-rm -f ./$(DEPDIR)/Function.Po
+	-rm -f ./$(DEPDIR)/Graph.Po
 	-rm -f ./$(DEPDIR)/ImpArithmetic.Po
 	-rm -f ./$(DEPDIR)/ImpBool.Po
 	-rm -f ./$(DEPDIR)/Main.Po
 	-rm -f ./$(DEPDIR)/Node.Po
+	-rm -f ./$(DEPDIR)/ProgState.Po
 	-rm -f Makefile
 distclean-am: clean-am distclean-compile distclean-generic \
 	distclean-tags
@@ -553,11 +559,13 @@ install-ps-am:
 installcheck-am:
 
 maintainer-clean: maintainer-clean-am
-		-rm -f ./$(DEPDIR)/Graph.Po
+		-rm -f ./$(DEPDIR)/Function.Po
+	-rm -f ./$(DEPDIR)/Graph.Po
 	-rm -f ./$(DEPDIR)/ImpArithmetic.Po
 	-rm -f ./$(DEPDIR)/ImpBool.Po
 	-rm -f ./$(DEPDIR)/Main.Po
 	-rm -f ./$(DEPDIR)/Node.Po
+	-rm -f ./$(DEPDIR)/ProgState.Po
 	-rm -f Makefile
 maintainer-clean-am: distclean-am maintainer-clean-generic
 

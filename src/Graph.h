@@ -3,14 +3,15 @@
 #include <cstdlib>
 #include <ctime>
 #include <list>
-#include "Node.h"
+#include "ProgState.h"
 
 const int aLength = 6;
 const int bLength = 2;
 const int fLength = 1;
-const int Ainit = 11;
-const int Binit = 3;
-const int Zinit = 0;
+const int Ainit = 1;
+const int Binit = 1;
+const int teacherNum = 10;
+const int studentNum = 100;
 
 using namespace std;
 
@@ -27,6 +28,8 @@ public:
 	void srcGraphInit();
 	void runTest();
 	INode* getEntry();
+	void transform();
+	
 private: 
 	InitNodes nodes;
 	Environment input;
@@ -34,7 +37,6 @@ private:
 	INode* exit;
 	void initANode(AssignNode* target, int label, string vname, Arithmetic* var, INode* nextNode);
 	void initBNode(BranchNode* target, int label, ImpBool* direction, INode* tNode, INode* fNode);
-	void setNodes(AssignNode* assignNodes, BranchNode* branchNodes, FuncNode* funcNodes);
 	void printNodes(INode* node);
 	void testGraph(INode* node);
 };

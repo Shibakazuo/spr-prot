@@ -157,7 +157,8 @@ ImpArithmetic.o: ImpArithmetic.cpp \
   /Library/Developer/CommandLineTools/usr/include/c++/v1/__bsd_locale_defaults.h \
   /Library/Developer/CommandLineTools/usr/include/c++/v1/bitset \
   /Library/Developer/CommandLineTools/usr/include/c++/v1/__bit_reference \
-  ImpArithmetic.h
+  ImpArithmetic.h Function.h \
+  /Library/Developer/CommandLineTools/usr/include/c++/v1/list
 
 /Library/Developer/CommandLineTools/usr/include/c++/v1/cstring:
 
@@ -596,3 +597,7 @@ ImpArithmetic.o: ImpArithmetic.cpp \
 /Library/Developer/CommandLineTools/usr/include/c++/v1/__bit_reference:
 
 ImpArithmetic.h:
+
+Function.h:
+
+/Library/Developer/CommandLineTools/usr/include/c++/v1/list:

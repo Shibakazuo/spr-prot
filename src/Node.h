@@ -7,9 +7,9 @@
 using namespace std;
 
 struct Environment {
-	int x;
-	int y;
-	int z;
+	int student;
+	int teacher;
+	int sum;
 };
 
 class INode {
