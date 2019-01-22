@@ -15,12 +15,12 @@ int main( ){
 	y = b; 
 	z = 0;
 
-	if (x < 10) {
+	if (x < 5) {
 		z = z + x; 
 	}
 	z = z + y;
 
-	while (z < 20) {
+	while (z < 25) {
 		z = z + y; 
 	} 
 

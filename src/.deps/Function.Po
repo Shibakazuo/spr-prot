@@ -1,4 +1,4 @@
-Main.o: Main.cpp \
+Function.o: Function.cpp \
   /Library/Developer/CommandLineTools/usr/include/c++/v1/cstring \
   /Library/Developer/CommandLineTools/usr/include/c++/v1/__config \
   /Library/Developer/CommandLineTools/usr/include/c++/v1/string.h \
@@ -157,11 +157,7 @@ Main.o: Main.cpp \
   /Library/Developer/CommandLineTools/usr/include/c++/v1/__bsd_locale_defaults.h \
   /Library/Developer/CommandLineTools/usr/include/c++/v1/bitset \
   /Library/Developer/CommandLineTools/usr/include/c++/v1/__bit_reference \
-  Graph.h /Library/Developer/CommandLineTools/usr/include/c++/v1/list \
-  ProgState.h \
-  /Library/Developer/CommandLineTools/usr/include/c++/v1/vector \
-  /Library/Developer/CommandLineTools/usr/include/c++/v1/__split_buffer \
-  Node.h ImpBool.h ImpArithmetic.h Function.h
+  /Library/Developer/CommandLineTools/usr/include/c++/v1/list Function.h
 
 /Library/Developer/CommandLineTools/usr/include/c++/v1/cstring:
 
@@ -599,20 +595,6 @@ Main.o: Main.cpp \
 
 /Library/Developer/CommandLineTools/usr/include/c++/v1/__bit_reference:
 
-Graph.h:
-
 /Library/Developer/CommandLineTools/usr/include/c++/v1/list:
-
-ProgState.h:
-
-/Library/Developer/CommandLineTools/usr/include/c++/v1/vector:
-
-/Library/Developer/CommandLineTools/usr/include/c++/v1/__split_buffer:
-
-Node.h:
-
-ImpBool.h:
-
-ImpArithmetic.h:
 
 Function.h:

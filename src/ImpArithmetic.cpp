@@ -47,12 +47,6 @@ int Aplus::getValue() {
 	return value;
 }
 
-void Aplus::setValue(Arithmetic* l, Arithmetic* r) {
-	left = l;
-	right = r;
-	value = left->getValue() + right->getValue();
-}
-
 string Aplus::getCode() {
 	return left->getCode() + " + " + right->getCode();
 }
@@ -65,36 +59,16 @@ bool Aplus::isVarOrConst() {
 	return false;
 }
 
-// Amult
-Amult::Amult(Arithmetic* l, Arithmetic* r) {
-	left = l;
-	right = r;
-	value = left->getValue() * right->getValue();
+Arithmetic* Aplus::getLeft() {
+	return left;
+}
+Arithmetic* Aplus::getRight() {
+	return right;
 }
 
-int Amult::getValue() {
-	return value;
+void Aplus::recalc() {
+	value = left->getValue() + right->getValue();
 }
-
-void Amult::setValue(Arithmetic* l, Arithmetic* r) {
-	left = l;
-	right = r;
-	value = left->getValue() * right->getValue();
-}
-
-string Amult::getCode() {
-	return left->getCode() + " * " + right->getCode();
-}
-
-void Amult::setResult(int res) {
-	value = res;
-}
-
-bool Amult::isVarOrConst() {
-	return false;
-}
-
-
 // const
 Aconst::Aconst(int val) {
 	value = val;
