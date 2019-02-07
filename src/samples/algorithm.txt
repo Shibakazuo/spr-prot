@@ -1,0 +1,49 @@
+R’ ← ε
+S’ ← ε
+for <I, O> in Neg T do
+	<O’, R1, R2, S1, S2> ← Exec(<p’, n’>, I , ϵ, ϵ)
+ 	while O’ != O do
+ 		D1 ← Flip(R1)
+ 		<O', R1, R2, S1, S2> ← Exec(<p', n'>, I, D1, R2)
+ 		if O == O' then 
+ 			break
+ 		end if 
+ 		D2 ← Flip(R2)
+ 		<O', R1, R2, S1, S2> ← Exec(<p', n'>, I, R1, D2)
+	end while
+ 	if O != O' then 
+		return ∅	
+	else 
+ 	  	R1' ← R1' ○ R1
+ 	  	R2' ← R2' ○ R2
+ 	  	S1' ← S1' ○ S1
+ 	  	S2' ← S2' ○ S2
+	end if
+end for 
+
+for <I, O> in PosT do
+ 	<O', R1, R2, S1, S2> ← Exec(<p', n'>, I, ϵ, ϵ)
+ 	R1' ← R1' ○ R1
+  	R2' ← R2' ○ R2
+  	S1' ← S1' ○ S1
+  	S2' ← S2' ○ S2
+end for 
+
+C1 ← { }
+C2 ← { }
+foreach σ1 in S1' and σ2 in S2' do
+	C1 ← C1 ∪ {(v == const),(v != const)|
+	∀v∀const,such that σ1(v) == const}
+    C2 ← C2 ∪ {(v == const),(v != const)|
+	∀v∀const,such that σ2(v) == const}
+end foreach	
+
+while C1 != { } and C2 != { } do
+ let c1 ∈ C1 maximizes F(R1', S1', c1)
+ C1 ← C1 / {c1}	
+ foreach c2 in C2 do
+ 	if Test(<p'[c1/abstc1, c2/abstc2], n'>, NegT, PosT) then
+ 		return <p'[c1/abstc1, c2/abstc2], n'>
+ 	end if 
+ end foreach
+end while
