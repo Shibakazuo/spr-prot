@@ -13,6 +13,7 @@ Graph::Graph() {
 	exit = NULL;
 }
 
+// 初期化で変換スキーマも適用しておく		
 void Graph::srcGraphInit() {
 	// 1
 	Aconst* r1 = new Aconst(Ainit);
@@ -40,6 +41,12 @@ void Graph::srcGraphInit() {
 	entry = &nodes.aNodes[0];
 	exit = &nodes.fNodes[0];
 
+	// transform 
+ 	abstConds.nodes[1].setAbstConds(4, &nodes.aNodes[4], &nodes.fNodes[0]);
+ 	abstConds.nodes[0].setAbstConds(6, &nodes.aNodes[3], &abstConds.nodes[1]);
+ 	&nodes.aNodes[2].setNext(&abstConds.nodes[0]);
+ 	&nodes.aNodes[3].setNext(&abstConds.nodes[1]); 
+
 	/*
 	 * print src code
 	 */ 
@@ -49,9 +56,7 @@ void Graph::srcGraphInit() {
 
 }
 
-void Graph::transform() {
-	
-}
+
 
 void Graph::runTest() {
 	testGraph(entry);

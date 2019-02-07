@@ -165,7 +165,6 @@ bool BranchNode::ifWhile(INode* node, int label) {
 
 void BranchNode::runCode() {
 	if (direct->getAvar()->getCode() == "student") {
-		// cout << "pass" << endl;
 		direct->getAvar()->setResult(env.student);
 		direct->resetDirect();
 	} else if (direct->getAvar()->getCode() == "teacher") {
@@ -180,6 +179,14 @@ void BranchNode::runCode() {
 		getNext()->setEnv(env.student, env.teacher, env.sum);	
 	}
 	cout << label << " if " << getCode() << " : student = " << env.student << " teacher = " << env.teacher <<  " sum = " << env.sum << endl; 
+}
+
+void BranchNode::setAbstCond(int num, INode* tNode, INode* fNode) {
+	trueNode = tNode;
+	falseNode = fNode;
+	label = num; 
+	direct = NULL;
+	ifAbstCond = 1; 
 }
 
 // FuncNode

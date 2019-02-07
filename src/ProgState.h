@@ -27,9 +27,10 @@ public:
 	void initStat();
 
 private:
-// stand for <l, σ, I, O, D, R, S> in SPR paper
+// stand for <l, σ1, σ2, I, O, D1, D2, R1, R2, S1, S2> in SPR paper
 	int currentLabel;
-	Environment currentEnv;
+	Environment env1;
+	Environment env2;
 	NegT negTestCase;
 	PosT posTestCase;
 	vector<bool> futureAbstcond;

@@ -21,6 +21,10 @@ struct InitNodes {
 	FuncNode fNodes[10];
 };
 
+struct abstConds {
+	BranchNode nods[10];
+}
+
 class Graph {
 public:
 	Graph();
@@ -28,10 +32,10 @@ public:
 	void srcGraphInit();
 	void runTest();
 	INode* getEntry();
-	void transform();
 	
 private: 
 	InitNodes nodes;
+	AbstConds abstConds;
 	Environment input;
 	INode* entry;
 	INode* exit;

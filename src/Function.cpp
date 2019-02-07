@@ -8,6 +8,6 @@
 using namespace std;
 
 void Function::pntError() {
-	cout << "error : there is some problem in variable passing" << endl;
+	cout << "error : there is some problem at variable passing" << endl;
 	exit(1);
 }
