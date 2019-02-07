@@ -2,7 +2,7 @@
 
 Before start, you need to install autoconf, automake.
 
-1. autoreconf --install --force
+1. autoreconf 
 
 2. make
 
