@@ -21,9 +21,9 @@ struct InitNodes {
 	FuncNode fNodes[10];
 };
 
-struct abstConds {
-	BranchNode nods[10];
-}
+struct AbstConds {
+	BranchNode nodes[10];
+};
 
 class Graph {
 public:

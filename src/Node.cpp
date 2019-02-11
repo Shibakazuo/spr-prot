@@ -127,6 +127,9 @@ void BranchNode::setEnv(int x, int y, int z) {
 }
 
 INode* BranchNode::getNext() {
+	if (ifAbstCond) { 
+		return trueNode; 
+	} 
 	return direct->getDirect() ? trueNode : falseNode;
 }
 
@@ -140,30 +143,39 @@ void BranchNode::setDirect(ImpBool* di) {
 }
 
 string BranchNode::getCode() {
+	if (ifAbstCond) {
+		return "ABSTCOND";
+	}
 	return direct->getCode();
 }
 
 INode* BranchNode::printAndSkip() {
-	if (ifWhile(trueNode, label)) {
-		cout << "WHILE " + direct->getCode() << endl;
-		cout << " " + trueNode->getCode() << endl;
-		cout << "END WHILE" << endl;
+	if (ifAbstCond) {
+		cout << "IF 1&&!ABSTCOND" << endl;
 	} else {
 		cout << "IF " + direct->getCode() << endl;
-		cout << " " + trueNode->getCode() << endl;
-		cout << "END IF" << endl;
 	}
+	cout << " " + trueNode->getCode() << endl;
+	cout << "END IF" << endl;
 	return falseNode;
 }
 
-bool BranchNode::ifWhile(INode* node, int label) {
-	if (node->getNext()->getLabel() == label) {
-		return true;
-	}
-	return false;
-}
+// Dont use while command this time
+// bool BranchNode::ifWhile(INode* node, int label) {
+// 	if (node->getNext()->getLabel() == label) {
+// 		return true;
+// 	}
+// 	return false;
+// }
 
 void BranchNode::runCode() {
+	if (ifAbstCond) {
+		// this should be a private method
+		if (getNext() != NULL) {
+			getNext()->setEnv(env.student, env.teacher, env.sum);	
+		}
+		return;
+	} 
 	if (direct->getAvar()->getCode() == "student") {
 		direct->getAvar()->setResult(env.student);
 		direct->resetDirect();

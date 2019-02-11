@@ -62,7 +62,7 @@ public:
 	virtual string getCode();
 	virtual INode* printAndSkip();
 	virtual void runCode();
-	void setAbstCond(int label, INode* tNode, INode* fNode);
+	void setAbstCond(int num, INode* tNode, INode* fNode);
 	void setDirect(ImpBool* di);
 	void setNext(INode* tNode, INode* fNode);
 	bool ifWhile(INode* node, int label); 

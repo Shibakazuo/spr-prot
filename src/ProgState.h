@@ -12,7 +12,6 @@ struct NegT {
 	vector<int> studentInput;
 	vector<int> teacherInput;
 	vector<int> sumOutput;
-	vector<int>	expectedOutput;
 };
 
 struct PosT {
@@ -27,13 +26,17 @@ public:
 	void initStat();
 
 private:
-// stand for <l, σ1, σ2, I, O, D1, D2, R1, R2, S1, S2> in SPR paper
+// stand for <l, σ1, σ2, I(include NegT and PosT), O, D1, D2, R1, R2, S1, S2> in SPR paper
 	int currentLabel;
 	Environment env1;
 	Environment env2;
 	NegT negTestCase;
 	PosT posTestCase;
-	vector<bool> futureAbstcond;
-	vector<bool> recAbstcond;
-	vector<Environment> recEnv;
+	vector<int> output;
+	vector<bool> futureAbstcond1;
+	vector<bool> futureAbstcond2;
+	vector<bool> recAbstcond1;
+	vector<bool> recAbstcond2;
+	vector<Environment> recEnv1;
+	vector<Environment> recEnv2;
 };

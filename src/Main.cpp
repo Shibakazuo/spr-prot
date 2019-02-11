@@ -2,7 +2,7 @@
 #include <iostream>
 #include <cstdlib>
 #include <ctime>
-#include "Graph.h"
+#include "CondSynthesizer.h"
 
 using namespace std;
 

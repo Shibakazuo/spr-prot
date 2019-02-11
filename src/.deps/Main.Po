@@ -218,7 +218,8 @@ Main.o: Main.cpp \
   /Library/Developer/CommandLineTools/usr/include/c++/v1/__bsd_locale_defaults.h \
   /Library/Developer/CommandLineTools/usr/include/c++/v1/bitset \
   /Library/Developer/CommandLineTools/usr/include/c++/v1/__bit_reference \
-  Graph.h /Library/Developer/CommandLineTools/usr/include/c++/v1/list \
+  CondSynthesizer.h Graph.h \
+  /Library/Developer/CommandLineTools/usr/include/c++/v1/list \
   ProgState.h \
   /Library/Developer/CommandLineTools/usr/include/c++/v1/vector \
   /Library/Developer/CommandLineTools/usr/include/c++/v1/__split_buffer \
@@ -661,6 +662,8 @@ Main.o: Main.cpp \
 /Library/Developer/CommandLineTools/usr/include/c++/v1/bitset:
 
 /Library/Developer/CommandLineTools/usr/include/c++/v1/__bit_reference:
+
+CondSynthesizer.h:
 
 Graph.h:
 

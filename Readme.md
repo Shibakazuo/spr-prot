@@ -28,7 +28,7 @@ IMP ver: src/CFG/
 
 ## Reference
 
-SPR paper: 
+SPR paper: https://people.csail.mit.edu/fanl/papers/spr-fse15.pdf
 
 automake tutorial: https://qiita.com/kagemiku/items/5aed05f7bd70d8035f54
 

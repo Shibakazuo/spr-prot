@@ -34,25 +34,25 @@ void Graph::srcGraphInit() {
 	nodes.aNodes[0].setEnv(0, 0, 0);
 	initANode(&nodes.aNodes[1], 2, "teacher", r2, &nodes.aNodes[2]);
 	initANode(&nodes.aNodes[2], 3, "sum", r3, &nodes.aNodes[3]);
-	initANode(&nodes.aNodes[3], 5, "sum", r4, &nodes.aNodes[4]);
-	initANode(&nodes.aNodes[4], 7, "sum", r5, &nodes.fNodes[0]);
+	initANode(&nodes.aNodes[3], 4, "sum", r4, &nodes.aNodes[4]);
+	initANode(&nodes.aNodes[4], 5, "sum", r5, &nodes.fNodes[0]);
 	nodes.fNodes[0].setLabel(9);
 	nodes.fNodes[0].setNext(NULL);
 	entry = &nodes.aNodes[0];
 	exit = &nodes.fNodes[0];
 
 	// transform 
- 	abstConds.nodes[1].setAbstConds(4, &nodes.aNodes[4], &nodes.fNodes[0]);
- 	abstConds.nodes[0].setAbstConds(6, &nodes.aNodes[3], &abstConds.nodes[1]);
- 	&nodes.aNodes[2].setNext(&abstConds.nodes[0]);
- 	&nodes.aNodes[3].setNext(&abstConds.nodes[1]); 
+ 	abstConds.nodes[1].setAbstCond(4, &nodes.aNodes[4], &nodes.fNodes[0]);
+ 	abstConds.nodes[0].setAbstCond(6, &nodes.aNodes[3], &abstConds.nodes[1]);
+ 	nodes.aNodes[2].setNext(&abstConds.nodes[0]);
+ 	nodes.aNodes[3].setNext(&abstConds.nodes[1]); 
 
 	/*
 	 * print src code
 	 */ 
 	cout << "---- start of src code ----" << endl;
 	printNodes(entry);
-	cout << "---- end of src code ---" << endl;
+	cout << "---- end of src code ----" << endl;
 
 }
 
