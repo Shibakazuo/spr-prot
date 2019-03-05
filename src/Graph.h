@@ -31,6 +31,7 @@ public:
 	~Graph() { };
 	void srcGraphInit();
 	void runTest();
+	void runTestWithInputs(int studentInput, int teacherInput);
 	INode* getEntry();
 	
 private: 

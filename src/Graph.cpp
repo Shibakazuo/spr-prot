@@ -41,7 +41,7 @@ void Graph::srcGraphInit() {
 	entry = &nodes.aNodes[0];
 	exit = &nodes.fNodes[0];
 
-	// transform 
+	// insert abstcond
  	abstConds.nodes[1].setAbstCond(4, &nodes.aNodes[4], &nodes.fNodes[0]);
  	abstConds.nodes[0].setAbstCond(6, &nodes.aNodes[3], &abstConds.nodes[1]);
  	nodes.aNodes[2].setNext(&abstConds.nodes[0]);
@@ -59,6 +59,14 @@ void Graph::srcGraphInit() {
 
 
 void Graph::runTest() {
+	testGraph(entry);
+}
+
+void Graph::runTestWithInput(int studentInput, int teacherInput) {
+	Aconst* AInput = new Aconst(Ainit);
+	Aconst* BInput = new Aconst(Binit);
+	nodes.aNodes[0].setValue("student", AInput);
+	nodes.aNodes[1].setValue("teacher", BInput);
 	testGraph(entry);
 }
 

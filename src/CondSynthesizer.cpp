@@ -6,6 +6,10 @@
 
 using namespace std;
 
-CondSynthesizer::condSynthesize(Graph* target, ProgState* progStat) {
-	
+void CondSynthesizer::condSynthesize(Graph* target, ProgState* progStat) {
+	NegT negTestCase = progStat->getNegT();
+	PosT posTestCase = progStat->getPosT();
+	for (i = 0; i < 3; i++) {
+		
+	}
 }

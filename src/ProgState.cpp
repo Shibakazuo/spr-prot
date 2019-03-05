@@ -18,8 +18,6 @@ void ProgState::initStat() {
 		negTestCase.teacherInput.push_back(teacherInput[i]);
 		negTestCase.sumOutput.push_back(sumOutput[i]);
 	}
-	
-
 
 	posTestCase.studentInput.push_back(studentInput[3]);
 	posTestCase.teacherInput.push_back(teacherInput[3]);
@@ -27,5 +25,13 @@ void ProgState::initStat() {
 
 	int len = negTestCase.studentInput.size();
 
-	// cout << "netT: " << *(negTestCase.studentInput.end()-1) << endl;
+	// cout << "negT: " << *(negTestCase.studentInput.end()-1) << endl;
 }	
+
+NegT ProgState::getNegT() {
+	return negTestCase;
+}
+
+PosT ProgState::getPosT() {
+	return posTestCase;
+}

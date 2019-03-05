@@ -24,6 +24,8 @@ class ProgState {
 public: 
 	~ProgState() { };
 	void initStat();
+	NegT getNegT();
+	PosT getPosT();
 
 private:
 // stand for <l, σ1, σ2, I(include NegT and PosT), O, D1, D2, R1, R2, S1, S2> in SPR paper
