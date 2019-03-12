@@ -62,7 +62,7 @@ void Graph::runTest() {
 	testGraph(entry);
 }
 
-void Graph::runTestWithInput(int studentInput, int teacherInput) {
+void Graph::runTestWithInput(int studentInput, int teacherInput, bool abstCondVal1, bool abstCondVal2) {
 	Aconst* AInput = new Aconst(Ainit);
 	Aconst* BInput = new Aconst(Binit);
 	nodes.aNodes[0].setValue("student", AInput);
@@ -74,6 +74,9 @@ INode* Graph::getEntry() {
 	return entry;
 }
 
+int Graph::getOutput() {
+	return exit->getEnv().sum;
+}
 
 // private
 void Graph::initANode(AssignNode* target, int label, string vname, Arithmetic* var, INode* nextNode) {

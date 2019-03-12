@@ -33,6 +33,7 @@ public:
 	void runTest();
 	void runTestWithInputs(int studentInput, int teacherInput);
 	INode* getEntry();
+	int getOutput();
 	
 private: 
 	InitNodes nodes;

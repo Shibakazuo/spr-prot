@@ -10,5 +10,5 @@ class CondSynthesizer {
 public:
 	void condSynthesize(Graph* target, ProgState* progStat);
 private:
-
+	void runExec(Graph* target, int studentInput, int studentInput, bool )
 };

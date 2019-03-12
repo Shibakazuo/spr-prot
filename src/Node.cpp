@@ -186,7 +186,6 @@ void BranchNode::runCode() {
 		direct->getAvar()->setResult(env.sum);
 		direct->resetDirect();
 	}
-
 	if (getNext() != NULL) {
 		getNext()->setEnv(env.student, env.teacher, env.sum);	
 	}
@@ -194,6 +193,7 @@ void BranchNode::runCode() {
 }
 
 void BranchNode::setAbstCond(int num, INode* tNode, INode* fNode) {
+	// should make a exception
 	trueNode = tNode;
 	falseNode = fNode;
 	label = num; 
