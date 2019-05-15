@@ -16,7 +16,7 @@ Graph::Graph() {
 void Graph::srcGraphInit() {
 	// 1
 	Aconst* r1 = new Aconst(Ainit);
-	// 2
+	// s
 	Aconst* r2= new Aconst(Binit);
 	// 3
 	Aconst* r3 = new Aconst(0);
